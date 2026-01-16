@@ -131,18 +131,25 @@ const blogPosts = [
       <p>SSH ve TLS arasındaki diğer bir fark, TLS’nin bağlantıların kimlik doğrulama olmadan şifrelenmesine veya şifreleme olmadan kimlik doğrulamasının yapılmasına olanak sağlamasıdır. SSH, tüm bağlantıları şifreler ve doğrular.</p>
       <p>SSH, BT ve bilgi güvenliği (infosec) uzmanlarına, SSH istemcilerini uzaktan yönetmek için güvenli bir mekanizma sağlar. SSH client ve server arasında bir bağlantı başlatmak için parola doğrulaması gerektirmek yerine, SSH aygıtların kimliğini doğrular. Bu, BT personelinin uzak sistemlerle bağlantı kurmasına ve known_hosts dosyasındaki host key çiftlerini ekleme veya kaldırma dahil olmak üzere SSH yapılandırmalarını değiştirmesine olanak tanır.</p>
       <h4>Kaynaklar</h4>
-      <p>Book:<br>
-      Computer Networking-A Top-Down Approach Seventh Edition — Kurose & Ross</p>
-      <p>Websites:<br>
-      https://www.cloudflare.com/learning/ssl/what-is-https/<br>
-      https://mbilgil0.medium.com/http-metotları-http-request-methods-90d57d574dfa<br>
-      https://www.cloudflare.com/learning/ssl/what-is-ssl/<br>
-      https://www.techtarget.com/searchsecurity/definition/Secure-Shell</p>
-      <p>Https<br>
-      Http Request<br>
-      Ssh<br>
-      Ssl<br>
-     </p>
+      <div class="blog-sources">
+        <h4>Kitap</h4>
+        <ul>
+          <li>Computer Networking: A Top-Down Approach (7th Edition) — Kurose & Ross</li>
+        </ul>
+        <h4>Web Kaynakları</h4>
+        <ul>
+          <li><a href="https://www.cloudflare.com/learning/ssl/what-is-https/" target="_blank">Cloudflare - What is HTTPS?</a></li>
+          <li><a href="https://www.cloudflare.com/learning/ssl/what-is-ssl/" target="_blank">Cloudflare - What is SSL?</a></li>
+          <li><a href="https://www.techtarget.com/searchsecurity/definition/Secure-Shell" target="_blank">TechTarget - Secure Shell</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">HTTPS</span>
+        <span class="blog-tag">HTTP Request</span>
+        <span class="blog-tag">SSH</span>
+        <span class="blog-tag">SSL</span>
+        <span class="blog-tag">TLS</span>
+      </div>
     `
   },
   {
@@ -307,16 +314,19 @@ const blogPosts = [
       <p>Issues lar bulduğumuz buglar olabilir, yeni fikirler olabilir, ya da tartışmalar olabilir. Bunu yeni github veya gitlab üzerinden projenin issues bölümünden açarak başlatabiliriz.</p>
       <p>Aşağıdaki Bu yazıyı hazırlarken kullandığı kaynakçalardan daha fazla ve detaylı bilgilere ulaşabilirsiniz.</p>
       <p>Okuduğunuz için Teşekkürler.</p>
-      <h4>Kaynakça</h4>
-      <ul>
-        <li>Versiyon Kontrolleri: Git ve GitHub<br>
-        Eğitim Amacı Yazılım geliştirme süreçlerinde sıklıkla karşımıza çıkan ve süreçlerimizi yönetmemize yardımcı olan Git…<br>
-        www.btkakademi.gov.tr</li>
-        <li>https://git-scm.com/book/en/v2</li>
-      </ul>
-      <p>Git<br>
-      Github<br>
-      Gitlab.</p>
+      <div class="blog-sources">
+        <h4>Kaynakça</h4>
+        <ul>
+          <li><a href="https://www.btkakademi.gov.tr" target="_blank">BTK Akademi - Versiyon Kontrolleri: Git ve GitHub</a></li>
+          <li><a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git Book (git-scm.com)</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">Git</span>
+        <span class="blog-tag">GitHub</span>
+        <span class="blog-tag">GitLab</span>
+        <span class="blog-tag">Version Control</span>
+      </div>
     `
   },
   {
@@ -441,15 +451,21 @@ images.appendChild(box);
       <p>Sugar, spice and evreything nice</p>
       <p>İşte sitemizin son hali</p>
       <p>Search özelliği genre filtreme vb özellikler ekleyerek daha efektif hale getirmek size kalmış:) Bu yazıda bana eşlik ettiğiniz için teşekkür eder ve iyi günler dilerim.</p>
-      <h4>kaynakça</h4>
-      <ul>
-        <li>https://developer.mozilla.org/en-US/</li>
-      </ul>
-      <p>Js<br>
-      Json<br>
-      API<br>
-      Tmdb<br>
-      Movies</p>
+      <div class="blog-sources">
+        <h4>Kaynakça</h4>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a></li>
+          <li><a href="https://www.themoviedb.org/documentation/api" target="_blank">TMDB API Documentation</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">JavaScript</span>
+        <span class="blog-tag">JSON</span>
+        <span class="blog-tag">API</span>
+        <span class="blog-tag">TMDB</span>
+        <span class="blog-tag">Movies</span>
+        <span class="blog-tag">Fetch</span>
+      </div>
     `
   },
 ];

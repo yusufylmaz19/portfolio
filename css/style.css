@@ -1102,3 +1102,120 @@ p {
   height: 100%;
   object-fit: cover;
 }
+
+/* ========== BLOG SOURCES & TAGS ========== */
+
+/* Kaynakça Section */
+.blog-detail-content h4:last-of-type,
+.blog-sources-title {
+  color: var(--neon-cyan);
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.blog-sources {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(168, 85, 247, 0.05));
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.blog-sources h4 {
+  color: var(--neon-cyan);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-sources h4::before {
+  content: "📚";
+}
+
+.blog-sources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-sources li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.blog-sources li:last-child {
+  border-bottom: none;
+}
+
+.blog-sources a {
+  color: var(--neon-green);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.blog-sources a:hover {
+  color: var(--neon-cyan);
+  text-decoration: underline;
+}
+
+/* Blog Tags Section */
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(0, 255, 136, 0.1));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+  cursor: default;
+}
+
+.blog-tag:hover {
+  border-color: var(--neon-purple);
+  color: var(--neon-purple);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+  transform: translateY(-2px);
+}
+
+.blog-tag::before {
+  content: "#";
+  color: var(--neon-green);
+  margin-right: 0.25rem;
+  font-weight: 600;
+}
+
+/* Blog Content Source Links */
+.blog-detail-content p:has(a[href*="cloudflare"]),
+.blog-detail-content p:has(a[href*="mozilla"]),
+.blog-detail-content p:has(a[href*="medium"]) {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 255, 136, 0.05);
+  border-left: 3px solid var(--neon-green);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 0.5rem 0;
+}
+
+/* Book Reference Style */
+.blog-detail-content p:contains("Book:"),
+.blog-detail-content p strong:first-child {
+  color: var(--neon-cyan);
+}
+

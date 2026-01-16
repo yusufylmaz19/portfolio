@@ -319,6 +319,139 @@ const blogPosts = [
       Gitlab.</p>
     `
   },
+  {
+    id: 3,
+    title: "TMDB API'sini kullanmak",
+    excerpt: "TMDB API ile popüler filmleri listeleyen bir web sayfası oluşturma rehberi.",
+    date: "2022-04-05",
+    readTime: "4 dk",
+    mediumUrl: "",
+    content: `
+      <h2>Tmdb API sini kullanmak</h2>
+      <p><strong>Yusuf Yılmaz</strong></p>
+      <p>4 min read · Apr 5, 2022</p>
+      <p>Merhaba, bu yazıda sizlere birlikte api kullanarak popüler filmleri listeleyen bir web sayfası tasarlayacağız.<br>
+      Öncelikle kısaca API nedir ona bakalım.</p>
+      <h3>API Nedir?</h3>
+      <p>API iki uygulamanın birbiri ile veri alışverişi yapmasını, konuşmasını sağlar. Bir uygulamanın işlevselliğini başka uygulamalar tarafından kullanılmasını sağlar.<br>
+      Telefonumuzdaki hava durumu uygulaması gibi. Hava durumu uygulaması bu bilgileri sağlayan uygulamanın server ile iletişime geçer ve bilgileri uygulama içinde gösterir.İşte bu olaya API deriz
+      ama biz web tabanlı API lere odaklanacağız.<br>
+      Web API leri JSON yada XML formatında veriler geri döner biz bu geri dönen
+      verileri kullanarak uygulamalarımızı tasralarız.</p>
+      <h3>Hangi Api yi kullanacağız?</h3>
+      <p>Bu yazıda bir film API si kullanacağız ama sizler farklı APIler kullanmak isteyebilirsiniz. Şu github linkinden kategorize edilmiş bir çok APIye erişebilirsiniz. Biz Tmdb APIsini kullanacağız.<br>
+      Bazı APIler key istemezken bazıları key e sahip olabilirler. bizim kullanacağımız istiyor.</p>
+      <h3>TMDB API den key alma</h3>
+      <p>Tmdb APIsini kullanmak için öncelikle şu linkten üye olmamız gerekir.<br>
+      Daha sonra Ayarlar&gt;API ye tıklayarak key talebinde bulunalım ve sonra karşımıza developer olarak mı profesyonel olarak mı ihtiyaç duyuyoruz diye iki seçenek çıkacak. developer ı seçip şartları kabul edelim. En son olarak bizden nerede? niçin? kullanacağız gibi bilgiler isteyecek gerekli bilgileri dolduralım ve</p>
+      <p>artık key e sahibiz. Tmdb nin bize sağladığı bilgilerden istediklerimizi kullanarak uygulamamızı geliştirebiliriz. Buradaki linkten
+      hangi verilere nasıl ulaşacağımızı görebiliriz.</p>
+      <h3>Şimdi tasarım</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+ &lt;head&gt;
+ &lt;meta charset="UTF-8" /&gt;
+ &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+ &lt;title&gt;my movie web site&lt;/title&gt;
+&lt;link rel="stylesheet" href="pop.css" /&gt;
+ &lt;link
+ rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" /&gt;&lt;/head&gt;
+&lt;body&gt;
+ &lt;div class="control"&gt;
+ &lt;button id="previous"&gt;&lt;i class="fa-solid fa-angles-left"&gt;&lt;/i&gt;&lt;/button&gt;
+ &lt;div class="images"&gt; 
+ &lt;/div&gt;
+ &lt;button id="next"&gt;&lt;i class="fa-solid fa-angles-right"&gt;&lt;/i&gt;&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div id="movie-details" class="movie-details hide"&gt;
+ &lt;/div&gt; 
+&lt;script src="pop.js"&gt;&lt;/script&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>Fetch edeceğimiz veriler images classına sahip divin içinde olacak.</p>
+      <h3>JavaScript kodları</h3>
+      <p>Şimdi apı keyimizi ve gerekli urlleri js dosyasına yazalım</p>
+      <pre><code>let page = 1;
+const APIKEY = "senin apı keyin";
+//populer filmlere ulaşacağımız url
+const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+//film posterlerini gösterebilmek için gereken diğer url
+const IMGPATH = \`https://image.tmdb.org/t/p/w1280/\`;</code></pre>
+      <p>Html taglerini pageleme kodlarını ekleyelim</p>
+      <pre><code>//maniupule edeceğimiz html elementleri
+const images = document.querySelector(".images");
+const nextBtn = document.getElementById("next");
+const previousBtn = document.getElementById("previous");
+// next page button
+nextBtn.addEventListener("click", () => {
+images.innerHTML = "";
+page++;
+if (page > 500) {
+page = 1;
+}
+const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+getPopMovies(URL);
+
+});
+// previous page button
+previousBtn.addEventListener("click", () => {
+images.innerHTML = "";
+page--;
+if (page < 1) {
+page = 500;
+}
+const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+getPopMovies(URL);
+}
+});</code></pre>
+      <p>Şimdi url i fetch etme zamanı</p>
+      <pre><code>// getting populer movies from apı
+const getPopMovies = (url) => {
+fetch(url).then(res=>res.json()).then(data=>{
+showMovies(data);
+})
+};</code></pre>
+      <p>Yukarıda görüldüğü gibi url imizi fetch() komutu içine attık fetch()yöntemi, yanıt hazır olduğunda yerine getirilen bir promise döndürerek ağdan bir kaynak alma sürecini başlatır. Daha sonra gelen promise JSON formatında olmadığı için json() komutu ile onu JSON a çeviriyoruz. json() komutu bize ikinci bir promise döndürecek. Burada bu işlemeleri then() komutu ile gerçekleştiriyoruz then() gelen promise in başarılı(resolve) mı başarısız(reject) mı olduğunu belli eden bir promise göndermemizi sağlar.2. promise de başarılı ise +filmeleri ekranda göstereceğimiz ShowMovies() fonksiyonuna parametre olarak gönderiyoruz.</p>
+      <pre><code>// showing movies on body
+const showMovies = (data) => {
+if (data.results !== null) {
+data.results.forEach((e) => {
+const { title: t, poster_path: p, vote_average: v, release_date: d ,id:i} = e;
+let box = document.createElement("div");
+box.classList.add("box");
+box.innerHTML = \`
+&lt;h1 id="title"&gt;\${t}&lt;/h1&gt;
+&lt;button class="savelater"&gt;&lt;i class="fa-solid fa-bookmark"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;img class="all-images" src="\${IMGPATH + p}"
+/&gt;
+&lt;div class="info"&gt;
+&lt;h3 &gt;\${d.slice(0, 4)}&lt;/h3&gt;
+&lt;h3&gt;\${v}&lt;/h3&gt;
+&lt;/div&gt;
+&lt;button class="details up"&gt;&lt;i class="fa-solid fa-angles-up"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+\`;
+images.appendChild(box);
+});
+}
+};</code></pre>
+      <p>Önce getPopMovies() den aldığımız data parameterinin results propertyisinin null olup olmadığını kontrol ediyoruz. data.results ın içindeki verilere erişmek için foreach yapısının kullanıyoruz. verileri daha rahat erişmek için ise Object destructuring kullanarak filmin afişi,ismine,puanına ve vizyon tarihine erişiyoruz. Bu verileri create ettiğimiz divin içine innerHTML i kullanarak ekliyoruz. Önceden bahsettiğimiz imagesin içine bu html kodlarını eklemek için images.appendChild(box) diyerek verileri sayfaya ekliyoruz. Şimdi kodumuzu biraz css ile güzelleştirip son haline getirelim</p>
+      <p>Sugar, spice and evreything nice</p>
+      <p>İşte sitemizin son hali</p>
+      <p>Search özelliği genre filtreme vb özellikler ekleyerek daha efektif hale getirmek size kalmış:) Bu yazıda bana eşlik ettiğiniz için teşekkür eder ve iyi günler dilerim.</p>
+      <h4>kaynakça</h4>
+      <ul>
+        <li>https://developer.mozilla.org/en-US/</li>
+      </ul>
+      <p>Js<br>
+      Json<br>
+      API<br>
+      Tmdb<br>
+      Movies</p>
+    `
+  },
 ];
 
 // Render blog cards on blog.html

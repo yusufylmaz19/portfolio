@@ -982,3 +982,123 @@ p {
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
 }
+
+/* ========== CSS ART GALLERY ========== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.gallery-item {
+  display: block;
+  background: var(--color-bg-tertiary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  text-decoration: none;
+}
+
+.gallery-item:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+  transform: translateY(-5px);
+}
+
+.gallery-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #111;
+}
+
+.gallery-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+}
+
+.gallery-info {
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gallery-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.gallery-tag {
+  background: rgba(168, 85, 247, 0.1);
+  color: var(--neon-purple);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Gallery Art Placeholders */
+.gallery-art-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700, #da70d6);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.gallery-art-placeholder[data-art="kurt"] {
+  background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700, #8b4513);
+}
+
+.art-icon {
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .art-icon {
+  transform: scale(1.1);
+}
+
+.art-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: var(--neon-green);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.gallery-item:hover .art-overlay {
+  opacity: 1;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gallery-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,214 +1,213 @@
-// Blog Posts Data
+// Blog Posts Data - Real Medium Articles by Yusuf Yılmaz
 const blogPosts = [
   {
     id: 1,
-    title: "Modern React Patterns: Hooks ve Custom Hook'lar",
-    excerpt: "React Hooks ile temiz ve yeniden kullanılabilir kod yazmak için en iyi pratikler ve custom hook oluşturma teknikleri.",
-    date: "2026-01-15",
-    readTime: "8 dk",
+    title: "HTTP, HTTPS, SSL/TLS, SSH",
+    excerpt: "Web ve HTTP protokollerinin detaylı incelemesi. HTTP request/response yapısı, HTTPS güvenliği, SSL sertifikaları ve SSH protokolü hakkında kapsamlı rehber.",
+    date: "2022-07-28",
+    readTime: "11 dk",
+    mediumUrl: "https://medium.com/@yusufylmaz15/http-https-ssl-tls-ssh-c7126392e2b5",
     content: `
-      <p>React Hooks, fonksiyonel componentlerde state ve lifecycle özelliklerini kullanmamızı sağlayan güçlü bir API'dir. Bu yazıda, modern React uygulamalarında sıkça kullanılan hook pattern'lerini inceleyeceğiz.</p>
+      <h2>Web ve HTTP</h2>
+      <p>1990'ların başına kadar İnternet öncelikle araştırmacılar, akademisyenler ve üniversite öğrencileri tarafından kullanılıyordu. Ta ki WWW (World Wide Web) sahneye çıkana kadar. Web, halkın dikkatini çeken ilk İnternet uygulamasıydı.</p>
       
-      <h2>useState ve useEffect Temelleri</h2>
-      <p>useState hook'u, fonksiyonel componentlerde local state yönetimi için kullanılır. useEffect ise side effect'leri yönetmek için tercih edilir.</p>
+      <h2>HTTP'ye Genel Bakış</h2>
+      <p>Hyper Text Transfer Protokol (HTTP) web'in uygulama katmanında 80 port numarası ile çalışan bir protokoldür. HTTP 2 programda uygulanır: istemci (client) programı ve sunucu (server) programı.</p>
       
-      <pre><code>const [count, setCount] = useState(0);
-
-useEffect(() => {
-  document.title = \`Count: \${count}\`;
-}, [count]);</code></pre>
+      <p>Bir Web sayfası object (nesne)lerden oluşur. Bir object kısaca HTML, JPEG, video-clip vb. - kısaca single URL ile adreslenebilir bir dosyadır.</p>
       
-      <h2>Custom Hook Oluşturma</h2>
-      <p>Custom hook'lar, component logic'ini yeniden kullanılabilir fonksiyonlara çıkarmamızı sağlar. "use" prefix'i ile başlamalıdırlar.</p>
+      <p>Her URL'in 2 tane bileşeni vardır: <strong>hostname</strong> ve <strong>pathname</strong>.</p>
+      <pre><code>http://www.someSchool.edu/someDepartment/picture.gif
+hostname: www.someSchool.edu
+pathname: /someDepartment/picture.gif</code></pre>
       
-      <pre><code>function useLocalStorage(key, initialValue) {
-  const [storedValue, setStoredValue] = useState(() => {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : initialValue;
-  });
-
-  const setValue = (value) => {
-    setStoredValue(value);
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  return [storedValue, setValue];
-}</code></pre>
+      <h2>HTTP Request/Response</h2>
+      <p>HTTP, temel aktarım protokolü olarak TCP'yi kullanır. HTTP client'i önce server ile bir TCP bağlantısı başlatır. Bağlantı kurulduğunda, browser ve server işlemleri TCP'ye kendi soket arayüzleri üzerinden erişim sağlar.</p>
       
-      <h2>Performance Optimizasyonu</h2>
-      <p>useMemo ve useCallback hook'ları, gereksiz render'ları önlemek için kritik öneme sahiptir. Expensive hesaplamaları memoize etmek performansı önemli ölçüde artırır.</p>
+      <h3>HTTP Methods</h3>
+      <ul>
+        <li><strong>GET:</strong> Browser bir object için request'te bulunduğunda kullanılır</li>
+        <li><strong>POST:</strong> Form verilerini göndermek için kullanılır</li>
+        <li><strong>PUT:</strong> Sunucudaki bir kaynağı güncellemek için kullanılır</li>
+        <li><strong>DELETE:</strong> Sunucudaki bir kaynağı silmeye yarar</li>
+        <li><strong>PATCH:</strong> Kaynağın bir kısmını değiştirmeye yarar</li>
+      </ul>
+      
+      <h3>HTTP Status Kodları</h3>
+      <ul>
+        <li><strong>1xx:</strong> Bilgilendirici</li>
+        <li><strong>2xx:</strong> Başarı (200 OK)</li>
+        <li><strong>3xx:</strong> Yönlendirme (301, 302)</li>
+        <li><strong>4xx:</strong> İstemci Hatası (404 Not Found)</li>
+        <li><strong>5xx:</strong> Sunucu Hatası (500, 503)</li>
+      </ul>
+      
+      <h2>HTTPS</h2>
+      <p>HTTPS, HTTP'nin güvenli sürümüdür. Veri aktarımının güvenliğini artırmak için HTTPS şifrelenir. HTTPS, iletişimleri şifrelemek için TLS (Transport Layer Security) protokolünü kullanır.</p>
+      
+      <h3>Public/Private Key</h3>
+      <ul>
+        <li><strong>Private Key:</strong> Web sitesinin sahibi tarafından kontrol edilir ve gizli tutulur</li>
+        <li><strong>Public Key:</strong> Sunucuyla güvenli etkileşim kurmak isteyen herkes tarafından kullanılabilir</li>
+      </ul>
+      
+      <h2>SSL/TLS</h2>
+      <p>SSL (Secure Sockets Layer), 443 portunda çalışan şifreleme tabanlı bir İnternet güvenlik protokolüdür. 1999'da SSL, TLS olarak güncellendi.</p>
+      
+      <h3>SSL Sertifika Türleri</h3>
+      <ul>
+        <li><strong>Single-Domain:</strong> Yalnızca bir domain için geçerli</li>
+        <li><strong>Wildcard:</strong> Domain ve alt domainler için geçerli</li>
+        <li><strong>Multi-Domain:</strong> Birden fazla domain için geçerli</li>
+      </ul>
+      
+      <h2>SSH</h2>
+      <p>Secure Shell (SSH), kullanıcılara güvenli olmayan bir ağ üzerinden bir bilgisayara güvenli erişim sağlayan bir ağ protokolüdür. Varsayılan olarak TCP port 22'yi kullanır.</p>
+      
+      <pre><code>ssh UserName@SSHserver.example.com</code></pre>
+      
+      <p>SSH, her bağlantının kimliğini doğrulamak için ayrı key çiftleri kullanır ve tüm bağlantıları şifreler.</p>
     `
   },
   {
     id: 2,
-    title: "Next.js 14 ile Server Components Rehberi",
-    excerpt: "Server Components nedir, nasıl çalışır? Next.js 14'ün sunduğu yeni özellikler ve best practices.",
-    date: "2026-01-10",
-    readTime: "12 dk",
+    title: "Git: Versiyon Kontrol Sistemi Rehberi",
+    excerpt: "Git nedir, nasıl çalışır? Branch, merge, stash, rebase ve GitHub entegrasyonu dahil kapsamlı Git rehberi.",
+    date: "2022-07-25",
+    readTime: "9 dk",
+    mediumUrl: "https://medium.com/@yusufylmaz15/git-718e2963910",
     content: `
-      <p>Next.js 14, React Server Components'ı varsayılan olarak destekleyen ve performans odaklı yenilikler sunan büyük bir güncelleme. Bu yazıda, Server Components'ın nasıl çalıştığını ve ne zaman kullanılması gerektiğini inceleyeceğiz.</p>
+      <h2>Git Nedir?</h2>
+      <p>Git, Linus Torvalds tarafından Linux'un çekirdeğini geliştirmek üzere tasarlanıp kullanılan bir versiyon kontrol sistemidir. Projede yaptığınız değişikleri versiyonlama ve bu versiyonlar arasında dolaşmak için kullanılan bir yapıdır.</p>
       
-      <h2>Server vs Client Components</h2>
-      <p>Server Components, sunucu tarafında render edilir ve client'a sadece HTML olarak gönderilir. Bu, JavaScript bundle boyutunu önemli ölçüde azaltır.</p>
-      
+      <h3>Git'i Popüler Yapan Şeyler</h3>
       <ul>
-        <li>Server Components: Data fetching, backend servislere erişim</li>
-        <li>Client Components: Interaktif elementler, event handlers</li>
+        <li>Hızlı olması</li>
+        <li>Yüzlerce farklı branch'te geliştirme ortamı sağlaması</li>
+        <li>Büyük çaplı projelerde rahatlıkla çalışması</li>
+        <li>GitHub gibi popüler bir mecra tarafından kullanılması</li>
       </ul>
       
-      <h2>'use client' Direktifi</h2>
-      <p>Bir component'ı Client Component olarak işaretlemek için dosyanın başına 'use client' direktifi eklenir.</p>
+      <h2>Git Yapısı</h2>
+      <ul>
+        <li><strong>Working Directory:</strong> Projemizin içinde olduğu klasör ortamı</li>
+        <li><strong>Staging Area:</strong> .git directory'sine atmadan önce değişiklikleri beklettiğimiz alan</li>
+        <li><strong>.git Directory:</strong> Emin olduğumuz değişiklikleri commit ettiğimiz klasör</li>
+      </ul>
       
-      <pre><code>'use client';
-
-import { useState } from 'react';
-
-export default function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    &lt;button onClick={() => setCount(count + 1)}&gt;
-      Count: {count}
-    &lt;/button&gt;
-  );
-}</code></pre>
+      <h2>Temel Git Komutları</h2>
       
-      <h2>Streaming ve Suspense</h2>
-      <p>Next.js 14, React Suspense ile streaming SSR'ı destekler. Bu sayede, yavaş data kaynaklarını beklemeden sayfanın hızlı kısımlarını gösterebilirsiniz.</p>
+      <h3>git config</h3>
+      <pre><code>git config --global user.email "your@email.com"
+git config --global user.name "yourname"</code></pre>
+      
+      <h3>git init</h3>
+      <p>Bu komut, çalıştığımız klasörün git tarafından takip edilebileceğini ifade eder.</p>
+      
+      <h3>git add</h3>
+      <pre><code>git add filename    # Tek dosya ekle
+git add .           # Tüm değişiklikleri ekle</code></pre>
+      
+      <h3>git commit</h3>
+      <pre><code>git commit -m "commit mesajı"</code></pre>
+      
+      <h2>Branch Yönetimi</h2>
+      <pre><code>git branch              # Branchleri listele
+git branch feat         # Yeni branch oluştur
+git switch feat         # Branch'e geç
+git branch -d feat      # Branch'i sil</code></pre>
+      
+      <h2>Merge ve Conflict</h2>
+      <p>İki branch'i birleştirmek için <code>git merge</code> kullanılır. Eğer conflict yoksa merge işlemi başarılı olur.</p>
+      
+      <h3>Fast Forward</h3>
+      <p>Yeni branch'te commit atıp, master'da hiç değişiklik yapmazsak, merge işlemi fast forwarding olur.</p>
+      
+      <h2>git stash</h2>
+      <p>Commit etmeye hazır olmadığımız durumlarda değişiklikleri geçici olarak saklamak için kullanılır.</p>
+      <pre><code>git stash           # Değişiklikleri sakla
+git stash pop       # Değişiklikleri geri getir
+git stash list      # Saklanan değişiklikleri listele</code></pre>
+      
+      <h2>git checkout, reset, revert</h2>
+      <pre><code>git checkout hashcode   # Commit'e geri dön
+git reset hashcode      # Commit'leri sil (değişiklikler kalır)
+git reset --hard hash   # Commit ve değişiklikleri sil
+git revert hashcode     # Commit'i geri al (yeni commit ile)</code></pre>
+      
+      <h2>Remote İşlemleri</h2>
+      <pre><code>git remote add origin url   # Remote repo ekle
+git push origin main        # Değişiklikleri gönder
+git pull                    # Değişiklikleri çek
+git clone url               # Repo'yu klonla</code></pre>
     `
   },
   {
     id: 3,
-    title: "TypeScript ile Type-Safe State Management",
-    excerpt: "Redux Toolkit ve TypeScript kullanarak güvenli ve ölçeklenebilir state yönetimi stratejileri.",
-    date: "2026-01-05",
-    readTime: "10 dk",
+    title: "TMDB API'sini Kullanma",
+    excerpt: "API nedir ve nasıl kullanılır? TMDB API ile popüler filmleri listeleyen bir web sayfası oluşturma rehberi.",
+    date: "2022-04-05",
+    readTime: "4 dk",
+    mediumUrl: "https://medium.com/@yusufylmaz15/tmdb-api-sini-kullanma-1e9a69269417",
     content: `
-      <p>TypeScript, JavaScript'e statik tip kontrolü ekleyerek runtime hatalarını compile time'da yakalamamızı sağlar. Bu yazıda, Redux Toolkit ile type-safe state management kurulumunu inceleyeceğiz.</p>
+      <h2>API Nedir?</h2>
+      <p>API iki uygulamanın birbiri ile veri alışverişi yapmasını, konuşmasını sağlar. Bir uygulamanın işlevselliğini başka uygulamalar tarafından kullanılmasını sağlar.</p>
       
-      <h2>Store Konfigürasyonu</h2>
-      <p>Redux Toolkit, TypeScript ile mükemmel entegrasyon sağlar. configureStore fonksiyonu, otomatik olarak state ve dispatch tiplerini çıkarır.</p>
+      <p>Web API'leri JSON veya XML formatında veriler geri döner. Biz bu geri dönen verileri kullanarak uygulamalarımızı tasarlarız.</p>
       
-      <pre><code>import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './userSlice';
-
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
-
-export type RootState = ReturnType&lt;typeof store.getState&gt;;
-export type AppDispatch = typeof store.dispatch;</code></pre>
+      <h2>TMDB API'den Key Alma</h2>
+      <ol>
+        <li>TMDB sitesine üye olun</li>
+        <li>Ayarlar > API'ye tıklayın</li>
+        <li>Developer seçeneğini seçin</li>
+        <li>Gerekli bilgileri doldurun ve key'inizi alın</li>
+      </ol>
       
-      <h2>Typed Hooks</h2>
-      <p>Type-safe selector ve dispatch için custom hook'lar oluşturmak best practice'tir.</p>
+      <h2>Proje Yapısı</h2>
       
-      <pre><code>import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-
-export const useAppDispatch = () => useDispatch&lt;AppDispatch&gt;();
-export const useAppSelector: TypedUseSelectorHook&lt;RootState&gt; = useSelector;</code></pre>
+      <h3>HTML</h3>
+      <pre><code>&lt;div class="control"&gt;
+  &lt;button id="previous"&gt;&lt;/button&gt;
+  &lt;div class="images"&gt;&lt;/div&gt;
+  &lt;button id="next"&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
       
-      <h2>createSlice ile Reducer Yazımı</h2>
-      <p>createSlice, action creator'ları otomatik olarak oluşturur ve TypeScript tipleri ile tam uyum sağlar.</p>
-    `
-  },
-  {
-    id: 4,
-    title: "CSS Grid ve Flexbox: Modern Layout Teknikleri",
-    excerpt: "Responsive ve modern web layoutları oluşturmak için CSS Grid ve Flexbox'ın birlikte kullanımı.",
-    date: "2025-12-28",
-    readTime: "7 dk",
-    content: `
-      <p>CSS Grid ve Flexbox, modern web layoutları oluşturmak için en güçlü araçlardır. Her birinin kendine özgü kullanım senaryoları vardır ve birlikte kullanıldığında mükemmel sonuçlar elde edilir.</p>
+      <h3>JavaScript - API Ayarları</h3>
+      <pre><code>let page = 1;
+const APIKEY = "senin_api_keyin";
+const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+const IMGPATH = \`https://image.tmdb.org/t/p/w1280/\`;</code></pre>
       
-      <h2>Flexbox vs Grid: Ne Zaman Hangisi?</h2>
-      <ul>
-        <li><strong>Flexbox:</strong> Tek boyutlu layoutlar (row veya column)</li>
-        <li><strong>Grid:</strong> İki boyutlu layoutlar (rows ve columns)</li>
-      </ul>
+      <h3>Fetch İşlemi</h3>
+      <pre><code>const getPopMovies = (url) => {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      showMovies(data);
+    });
+};</code></pre>
       
-      <h2>Grid Template Areas</h2>
-      <p>Grid template areas, karmaşık layoutları görsel olarak tanımlamanın en kolay yoludur.</p>
+      <h3>Filmleri Gösterme</h3>
+      <pre><code>const showMovies = (data) => {
+  if (data.results !== null) {
+    data.results.forEach((e) => {
+      const { title: t, poster_path: p, vote_average: v, release_date: d } = e;
+      let box = document.createElement("div");
+      box.classList.add("box");
+      box.innerHTML = \`
+        &lt;h1&gt;\${t}&lt;/h1&gt;
+        &lt;img src="\${IMGPATH + p}" /&gt;
+        &lt;div class="info"&gt;
+          &lt;h3&gt;\${d.slice(0, 4)}&lt;/h3&gt;
+          &lt;h3&gt;\${v}&lt;/h3&gt;
+        &lt;/div&gt;
+      \`;
+      images.appendChild(box);
+    });
+  }
+};</code></pre>
       
-      <pre><code>.container {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "sidebar main aside"
-    "footer footer footer";
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: auto 1fr auto;
-}</code></pre>
-      
-      <h2>Responsive Design Patterns</h2>
-      <p>auto-fill ve minmax() kombinasyonu ile media query olmadan responsive grid'ler oluşturabilirsiniz.</p>
-      
-      <pre><code>.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}</code></pre>
-    `
-  },
-  {
-    id: 5,
-    title: "Web Performance Optimizasyonu",
-    excerpt: "Core Web Vitals, lazy loading, code splitting ve daha fazlası ile web performansını artırma teknikleri.",
-    date: "2025-12-20",
-    readTime: "15 dk",
-    content: `
-      <p>Web performansı, kullanıcı deneyimi ve SEO için kritik öneme sahiptir. Google'ın Core Web Vitals metrikleri, performansı ölçmek için standart haline gelmiştir.</p>
-      
-      <h2>Core Web Vitals</h2>
-      <ul>
-        <li><strong>LCP (Largest Contentful Paint):</strong> En büyük içerik öğesinin yüklenme süresi</li>
-        <li><strong>FID (First Input Delay):</strong> İlk kullanıcı etkileşimine yanıt süresi</li>
-        <li><strong>CLS (Cumulative Layout Shift):</strong> Görsel kararlılık</li>
-      </ul>
-      
-      <h2>Image Optimizasyonu</h2>
-      <p>Modern format'lar (WebP, AVIF) ve responsive images kullanarak image optimizasyonu yapın.</p>
-      
-      <pre><code>&lt;picture&gt;
-  &lt;source srcset="image.avif" type="image/avif"&gt;
-  &lt;source srcset="image.webp" type="image/webp"&gt;
-  &lt;img src="image.jpg" alt="Description" loading="lazy"&gt;
-&lt;/picture&gt;</code></pre>
-      
-      <h2>Code Splitting</h2>
-      <p>Dynamic import ile route-based code splitting uygulayarak initial bundle boyutunu küçültün.</p>
-    `
-  },
-  {
-    id: 6,
-    title: "Git Workflow ve Best Practices",
-    excerpt: "Takım çalışması için etkili Git stratejileri, branch yönetimi ve commit conventions.",
-    date: "2025-12-15",
-    readTime: "6 dk",
-    content: `
-      <p>Etkili bir Git workflow, takım verimliliğini artırır ve kod kalitesini korur. Bu yazıda, profesyonel projelerde kullanılan Git best practice'lerini inceleyeceğiz.</p>
-      
-      <h2>Branch Stratejileri</h2>
-      <p>Git Flow veya GitHub Flow gibi stratejiler, takım çalışmasını organize eder.</p>
-      
-      <ul>
-        <li><strong>main/master:</strong> Production-ready kod</li>
-        <li><strong>develop:</strong> Aktif geliştirme</li>
-        <li><strong>feature/*:</strong> Yeni özellikler</li>
-        <li><strong>hotfix/*:</strong> Acil düzeltmeler</li>
-      </ul>
-      
-      <h2>Conventional Commits</h2>
-      <p>Standardize commit mesajları, changelog oluşturmayı ve semantic versioning'i otomatikleştirir.</p>
-      
-      <pre><code>feat: add user authentication
-fix: resolve login redirect issue
-docs: update API documentation
-refactor: simplify validation logic
-test: add unit tests for auth module</code></pre>
-      
-      <h2>Pull Request Best Practices</h2>
-      <p>Küçük, focused PR'lar review sürecini hızlandırır. Her PR tek bir sorunu çözmelidir.</p>
+      <p>Search özelliği, genre filtreleme vb. özellikler ekleyerek daha efektif hale getirmek size kalmış!</p>
     `
   }
 ];

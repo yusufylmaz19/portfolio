@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yusuf Yılmaz Blog - Frontend development yazıları">
+  <title>Blog | Yusuf Yılmaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">YY<span class="text-neon-green">.</span></a>
+      <div class="nav-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+        <li><a href="about.html" class="nav-link">Hakkımda</a></li>
+        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">İletişim</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <header class="page-header">
+    <div class="container">
+      <span class="section-tag fade-in">Blog</span>
+      <h1 class="page-title fade-in">Yazılarım</h1>
+      <p class="page-subtitle fade-in">Frontend development ve web teknolojileri</p>
+    </div>
+  </header>
+  
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid" id="blog-container"></div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">© 2026 Yusuf Yılmaz. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/blog.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

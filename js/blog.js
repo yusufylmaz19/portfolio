@@ -217,7 +217,7 @@ test: add unit tests for auth module</code></pre>
 function renderBlogCards() {
   const container = document.getElementById('blog-container');
   if (!container) return;
-  
+
   const html = blogPosts.map(post => `
     <article class="card fade-in">
       <h3 class="card-title">${post.title}</h3>
@@ -232,9 +232,9 @@ function renderBlogCards() {
       </a>
     </article>
   `).join('');
-  
+
   container.innerHTML = html;
-  
+
   // Trigger animations
   setTimeout(() => {
     document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
@@ -245,9 +245,9 @@ function renderBlogCards() {
 function renderFeaturedBlogs() {
   const container = document.getElementById('featured-blogs');
   if (!container) return;
-  
+
   const featured = blogPosts.slice(0, 3);
-  
+
   const html = featured.map(post => `
     <article class="card">
       <h3 class="card-title">${post.title}</h3>
@@ -262,7 +262,7 @@ function renderFeaturedBlogs() {
       </a>
     </article>
   `).join('');
-  
+
   container.innerHTML = html;
 }
 
@@ -270,12 +270,12 @@ function renderFeaturedBlogs() {
 function renderBlogDetail() {
   const container = document.getElementById('blog-detail');
   if (!container) return;
-  
+
   const urlParams = new URLSearchParams(window.location.search);
   const postId = parseInt(urlParams.get('id'));
-  
+
   const post = blogPosts.find(p => p.id === postId);
-  
+
   if (!post) {
     container.innerHTML = `
       <div class="text-center">
@@ -286,7 +286,7 @@ function renderBlogDetail() {
     `;
     return;
   }
-  
+
   const html = `
     <a href="blog.html" class="back-button">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -306,7 +306,7 @@ function renderBlogDetail() {
       ${post.content}
     </div>
   `;
-  
+
   container.innerHTML = html;
 }
 
@@ -321,4 +321,76 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBlogCards();
   renderFeaturedBlogs();
   renderBlogDetail();
+  renderGallery();
 });
+
+// ========== CSS ART GALLERY ==========
+
+// Gallery Data
+const cssArtworks = [
+  {
+    id: 'abKmvRx',
+    title: 'Kurt Cobain',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'dyEpmMG',
+    title: 'Ana de Armas',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'rNdgPQe',
+    title: 'Wall-E & Eve',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'ExELzbN',
+    title: 'Freddie Mercury',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'mdxWQvJ',
+    title: 'Samurai Jack',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'KKoMzYe',
+    title: 'PowerPuff Girls Bubbles',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'GRxzoKO',
+    title: 'John Lennon',
+    tag: 'Pure CSS Art'
+  },
+  {
+    id: 'BarKWRB',
+    title: 'The Office Logo',
+    tag: 'Pure CSS Art'
+  }
+];
+
+// Render gallery on index.html
+function renderGallery() {
+  const container = document.getElementById('css-art-gallery');
+  if (!container) return;
+
+  const html = cssArtworks.map(art => `
+    <a href="https://codepen.io/yusufyilmaz_/pen/${art.id}" target="_blank" rel="noopener noreferrer" class="gallery-item fade-in">
+      <div class="gallery-preview">
+        <img src="https://shots.codepen.io/yusufyilmaz_/pen/${art.id}-800.jpg" alt="${art.title} CSS Art" loading="lazy">
+      </div>
+      <div class="gallery-info">
+        <h4 class="gallery-title">${art.title}</h4>
+        <span class="gallery-tag">${art.tag}</span>
+      </div>
+    </a>
+  `).join('');
+
+  container.innerHTML = html;
+
+  // Trigger animations
+  setTimeout(() => {
+    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  }, 100);
+}

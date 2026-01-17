@@ -165,12 +165,135 @@ const blogPosts = [
       </div>
     `,
       en: `
-      <h2>HTTP, HTTPS, SSL/TLS, SSH</h2>
+     <h2>HTTP, HTTPS, SSL/TLS, SSH</h2>
       <h3>Web and HTTP</h3>
-      <p>Until the early 1990s, the Internet was primarily used by researchers, academics, and university students for logging into remote hosts, transferring files, sending and receiving news, and email. That was until the WWW (World Wide Web) emerged. The Web was the first Internet application to capture public attention, significantly changing how people interact. The Web works on demand - users get what they want when they want it. The Web made everyone a publisher. Search engines help us navigate the web ocean, and Web protocols serve as a platform for YouTube, Gmail, Instagram, and Google Maps.</p>
+      <p>Until the early 1990s, the Internet was primarily used by researchers, academics, and university students. It was used for logging into remote hosts, transferring files from local hosts to remote hosts and vice versa, sending and receiving news, and sending and receiving electronic mail. That was until the WWW (World Wide Web) emerged. The Web was the first Internet application to capture the public's attention. It significantly changed how people interact within and outside their work environments and continues to do so. Perhaps what appeals most to users is that the Web works on demand. Users get what they want whenever they want it. This is the exact opposite of TV and Radio broadcasts. The Web has turned everyone into a publisher. Search engines have enabled us to navigate the web ocean. Forms, JavaScript, Java applications, and many other tools allow us to interact with pages and sites. And Web protocols serve as a platform for YouTube, Web-based email (like Gmail), and most mobile Internet applications, such as Instagram and Google Maps.</p>
       <h3>HTTP Overview</h3>
-      <p>Hypertext Transfer Protocol (HTTP) works on port 80 at the application layer. HTTP is the heart of the web, implemented in client and server programs that exchange HTTP messages.</p>
-      <p><em>Note: Full technical content available in Turkish. Complete English translation coming soon.</em></p>
+      <p>Hyper Text Transfer Protocol (HTTP) is a protocol that operates at the application layer of the web using port 80. We can call it the heart of the Web. HTTP is implemented in two programs: the client program and the server program. The Server and Client communicate by exchanging HTTP messages through end systems. The structure of these messages is defined by HTTP. Before diving into the details of HTTP, let's examine some web terminology. A Web page (also called a document) consists of objects. An object is simply a file—such as HTML, JPEG, video-clip, etc.—that is addressable by a single URL.</p>
+      <p>Mostly, a web page consists of a base HTML file and many different objects. For example, if a Web page has 1 HTML file and 5 JPEG files, there are a total of 6 objects on this web page. The base HTML file references other objects on the page using their URLs. Each URL has two components: hostname and pathname. For example: http://www.someSchool.edu/someDepartment/picture.gif In this URL, www.someSchool.edu is the hostname, and /someDepartment/picture.gif is the pathname. Web Browsers implement the Client side of HTTP, while Web Servers implement the Server side. HTTP defines how Web clients request Web pages from Web servers and how servers transfer Web pages to clients. When a Client makes a request (for example, by clicking a link), the Browser sends an HTTP Request message to the server for the objects on the page. When the Server receives the request message, it sends an HTTP Response message back to the browser.</p>
+      <p>HTTP uses TCP as its primary transport protocol. The HTTP client first initiates a TCP connection with the server. Once the connection is established, the browser and server processes access TCP through their socket interfaces. On the client side, the socket interface is the gate between the client process and the TCP connection; on the server side, it is the gate between the server process and the TCP connection. The Client sends HTTP request messages to the socket interface and receives HTTP response messages from the socket interface.</p>
+      <img src="images/blog/1/1.png" alt="HTTP Socket Interface" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <p>Similarly, the HTTP server receives request messages from the socket interface and sends response messages to the socket interface. Once the client sends a message to the socket interface, the message is out of the client's hands and in the hands of TCP. TCP provides a reliable data transfer service to HTTP. This means that every HTTP request message sent by a client process eventually reaches the server intact; similarly, every HTTP response message sent by the server process eventually reaches the client in full. Here we see a major advantage of layered architecture. HTTP does not deal with data loss; this task is handled by TCP.</p>
+      <h3>HTTP Message Formats</h3>
+      <p>There are two different message formats: Response message and Request message.</p>
+      <img src="images/blog/1/2.png" alt="HTTP Message Formats" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <small>HTTP Request Message Structure</small>
+      <p>First, we see that the message is written in ordinary ASCII text; even an average computer user can read it. Second, we see that the message consists of five lines, each followed by a carriage return and a line feed. This request message consists of 5 lines, but it can consist of more.</p>
+      <p>The first line of an HTTP request message is called the request line. The subsequent lines are called Header Lines. The request line consists of 3 fields: the Method field, the URL field, and the HTTP version field.</p>
+      <p>The method field can take values such as GET, POST, PUT, DELETE, and HEAD. The most commonly used are GET and POST. GET is used when a browser requests an object.</p>
+      <ul>
+        <li>PUT: Used to update a resource on the server. These requests also usually carry the information intended to be changed.</li>
+        <li>PATCH: This method is also used to modify a resource on the server. The difference from Put is that Put is used to replace the resource on the server with a new one, while Patch is used to change a part of that resource.</li>
+        <li>DELETE: Used to delete a resource on the server.</li>
+      </ul>
+      <p>Less commonly used methods are as follows:</p>
+      <ul>
+        <li>CONNECT: Sends a request to establish a connection with the server. It allows testing server connections with minimum load.</li>
+        <li>HEAD: Sends a request to the server just like the Get method, but it only has a header (Request Header) and no body (Request Body). It is usually used to check if a resource exists on the server or for the resource's latest update information.</li>
+        <li>OPTIONS: Used to check which methods the server supports.</li>
+        <li>TRACE: When you send a request to a server with this method, all intermediate proxy servers (Proxy, Gateway) add their own IP or DNS information to the request header. It is generally used for debugging/maintenance tasks.</li>
+      </ul>
+      <p>In the example request above, the requested object is /somedir/page.html. In this example, the browser is using HTTP/1.1 version.</p>
+      <p><strong>Header lines;</strong></p>
+      <ul>
+        <li>Host: www.someschool.edu: Specifies the host where the object is located.</li>
+        <li>Connection: close: The browser is telling the server it does not want to deal with persistent connections; it wants the server to close the connection after sending the requested object.</li>
+        <li>User-Agent: Specifies the type of Browser making the request to the server. Here, the user-agent is Mozilla/5.0, which is a Firefox browser. This Header line is useful because the server can actually send different versions of the same object to different types of user-agents.</li>
+        <li>Accept-language: The header indicates that if such an object exists on the server, the user prefers to receive a French version of the object; otherwise, the server should send its default version.</li>
+      </ul>
+      <p>After examining the example above, let's look at the general format of an HTTP request.</p>
+      <p>However, after the header lines (and the additional carriage return and line feed), there is an "entity body." The entity body is empty with the GET method but is used with the POST method. An HTTP client typically uses the POST method when a user fills out a form (for example, when a user types search terms into a search engine). With a POST message, the user is still requesting a Web page on a server. However, the specific content of the Web page depends on what the user entered in the form fields. If the method value is POST, the entity body contains the values entered by the user.</p>
+      <img src="images/blog/1/3.png" alt="HTTP POST Method" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <p>HTML forms usually use the GET method and include the entered data (in the form fields) in the requested URL. For example, if a form uses the GET method, has two fields, and the entries for the two fields are "monkeys" and "bananas," the URL will have a structure like: www.somesite.com/animalsearch?monkeys&bananas.</p>
+      <p>Now let's examine the HTTP Response message.</p>
+      <img src="images/blog/1/4.png" alt="HTTP Response Message" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <p>In the status line, we see 3 different sections. We see 6 Header lines and finally the entity body. There are three fields in the status line: the protocol version field, the status code, and the corresponding status message.</p>
+      <p>In this example, the status line indicates that the server is using HTTP/1.1 and that everything is okay (meaning the server found and sent the requested object).</p>
+      <p><strong>Let's take a look at the Header lines.</strong></p>
+      <ul>
+        <li>Connection: close: The server is telling the client that it will close the TCP connection after sending the message.</li>
+        <li>Date: Indicates the time and date when the HTTP response was created and sent by the server. Note that this is not the time the object was created or last modified; it is the time the server retrieved the object from the file system, attached it to the response message, and sent the response message.</li>
+        <li>The Server: Indicates that the message was generated by an Apache Web server; similar to the User-agent header line in the HTTP request message.</li>
+        <li>Last-Modified: This header is critical for object caching, both on local clients and network cache servers (also known as proxy servers).</li>
+        <li>Content-Length: The header line indicates the number of bytes in the sent object.</li>
+        <li>Content-Type: The header line indicates that the object in the entity body is HTML text.</li>
+      </ul>
+      <h3>HTTP Status Codes</h3>
+      <ul>
+        <li>1xx Informational</li>
+        <li>2xx Success</li>
+        <li>3xx Redirection</li>
+        <li>4xx Client Error</li>
+        <li>5xx Server Error. xx here represents numbers between 00–99.</li>
+      </ul>
+      <p>The most commonly encountered codes are as follows.</p>
+      <ul>
+        <li>HTTP Status Code 200 — OK.</li>
+        <li>HTTP Status Code 301 — Permanent Redirect.</li>
+        <li>HTTP Status Code 302 — Temporary Redirect.</li>
+        <li>HTTP Status Code 404 — Not Found.</li>
+        <li>HTTP Status Code 410 — Gone.</li>
+        <li>HTTP Status Code 500 — Internal Server Error.</li>
+        <li>HTTP Status Code 503 — Service Unavailable.</li>
+      </ul>
+      <h3>HTTPS</h3>
+      <p>Hypertext Transfer Protocol Secure (HTTPS) is the secure version of HTTP, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted to increase the security of data transfer. This is especially important when users transmit sensitive data, such as logging into a bank account, email service, or health insurance provider.</p>
+      <p>Any website, especially those requiring login credentials, should use HTTPS. In modern web browsers like Chrome, websites that do not use HTTPS are marked differently from others. Look for a green padlock in the URL bar to indicate that the web page is secure. Web browsers take HTTPS seriously; Google Chrome and other browsers mark all non-HTTPS websites as not secure.</p>
+      <img src="images/blog/1/5.png" alt="HTTPS Not Secure Warning" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <h4>How does HTTPS work?</h4>
+      <p>HTTPS uses an encryption protocol to encrypt communications. Although previously known as Secure Sockets Layer (SSL), the protocol is now called Transport Layer Security (TLS). This protocol secures communication using what is known as an asymmetric public key infrastructure. This type of security system uses two different keys to encrypt communication between two parties:</p>
+      <ul>
+        <li><strong>Private Key</strong> — This key is controlled by the owner of a website and is kept private, as the reader might guess. This key resides on a web server and is used to decrypt information encrypted by the public key.</li>
+        <li><strong>Public key</strong> — This key is available to anyone who wants to interact with the server securely. Information encrypted by the public key can only be decrypted by the private key.</li>
+      </ul>
+      <h3>What is SSL?</h3>
+      <p>SSL, or Secure Sockets Layer, is an encryption-based Internet security protocol operating on port 443. It was originally developed by Netscape in 1995 to ensure privacy, authentication, and data integrity in Internet communications. SSL is the predecessor to the modern TLS encryption used today. A website that implements SSL/TLS has "HTTPS" in its URL instead of "HTTP."</p>
+      <img src="images/blog/1/6.png" alt="HTTPS URL" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+      <h4>How does SSL/TLS work?</h4>
+      <p>To provide a high degree of privacy, SSL encrypts data transmitted over the web. This means that anyone trying to intercept this data will only see a scrambled mix of characters that is nearly impossible to decrypt.<br>
+      SSL initiates an authentication process called a handshake between two communicating devices to ensure that both devices are truly who they claim to be.<br>
+      SSL also digitally signs data to provide data integrity, verifying that the data has not been tampered with before reaching its intended recipient.<br>
+      There have been several iterations of SSL, each more secure than the last. In 1999, SSL was updated to become TLS.</p>
+      <h4>Are SSL and TLS the same?</h4>
+      <p>SSL is the direct predecessor to another protocol called TLS (Transport Layer Security). In 1999, the Internet Engineering Task Force (IETF) proposed an update to SSL. Since this update was developed by the IETF and Netscape was no longer involved, the name was changed to TLS. The differences between the final version of SSL (3.0) and the first version of TLS are not very large; the name change was applied to signify the change in ownership.</p>
+      <p>Because they are so closely related, the two terms are often used interchangeably and confused. Some people still use SSL to refer to TLS, while others use the term "SSL/TLS encryption" because SSL still has a lot of brand recognition.</p>
+      <h4>What is an SSL Certificate?</h4>
+      <p>SSL can only be implemented by websites that have an SSL certificate (technically a "TLS certificate"). An SSL certificate is like an ID card or a badge proving that someone is who they say they are. SSL certificates are stored and displayed on the Web by a website's or application's server.</p>
+      <p>One of the most important pieces of information in an SSL certificate is the website's public key. The public key makes encryption possible. A user's device views the public key and uses it to establish secure encryption keys with the web server. Meanwhile, the web server also has a private key that is kept secret; the private key decrypts data encrypted with the public key.</p>
+      <p>Certificate Authorities (CA) are responsible for issuing SSL certificates.</p>
+      <h4>What are the types of SSL Certificates?</h4>
+      <p>There are several different types of SSL certificates. A certificate can be applied to a single website or several websites, depending on its type:</p>
+      <ul>
+        <li><strong>Single-Domain:</strong> An SSL certificate is valid for only one domain ("domain" is the name of a website, such as www.cloudflare.com).</li>
+        <li><strong>Wildcard:</strong> An SSL certificate is valid for only one domain, but it also includes the subdomains of that domain. For example, a wildcard certificate could cover www.cloudflare.com, blog.cloudflare.com, and developers.cloudflare.com, whereas a single-domain certificate could only cover the first one.</li>
+        <li><strong>Multi-Domain:</strong> As the name suggests, multi-domain SSL certificates can be applied to multiple unrelated domain names.</li>
+      </ul>
+      <p>SSL certificates also come with different validation levels. The validation level is like a background check, and the level varies depending on the thoroughness of the check.</p>
+      <ul>
+        <li><strong>Domain Validation:</strong> This is the lowest level of validation and the cheapest. All a business needs to do is prove that they control the domain.</li>
+        <li><strong>Organization Validation:</strong> This is a more hands-on process: the CA contacts the person or business requesting the certificate directly. These certificates are more trustworthy for users.</li>
+        <li><strong>Extended Validation:</strong> This requires a full background check of an organization before an SSL certificate is issued.</li>
+      </ul>
+      <h3>SSH</h3>
+      <p>SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that provides users, especially system administrators, with a secure way to access a computer over an insecure network.</p>
+      <p>SSH also refers to the suite of utilities that implement the SSH protocol. Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network like the internet.</p>
+      <p>In addition to providing strong encryption, SSH is widely used by network administrators to manage systems and applications remotely, allowing them to log in to another computer over a network, execute commands, and move files from one computer to another.</p>
+      <p>An SSH server, by default, listens on the standard Transmission Control Protocol (TCP) port 22.</p>
+      <h4>How does SSH work?</h4>
+      <p>Secure Shell was created to replace insecure terminal emulation or login programs such as Telnet, rlogin (remote login), and rsh (remote shell). SSH enables the same functions—logging into remote systems and running terminal sessions. SSH also replaces file transfer programs such as File Transfer Protocol (FTP) and rcp (remote copy).</p>
+      <p>The most basic use of SSH is to connect to a remote host for a terminal session. The command is as follows:</p>
+      <pre><code>ssh UserName@SSHserver.example.com</code></pre>
+      <p>This command causes the client to attempt to connect to the server named server.example.com using the user ID UserName. If a connection is being established between the local host and the server for the first time, the user is asked for public key fingerprint permission for the remote host.</p>
+      <pre><code>The authenticity of host 'sample.ssh.com' cannot be established.
+ DSA key fingerprint is 01:23:45:67:89:ab:cd:ef:ff:fe:dc:ba:98:76:54:32:10.
+ Are you sure you want to continue connecting (yes/no)?</code></pre>
+      <p>Responding "yes" to the prompt allows the session to continue, and the host key is stored in the local system's known_hosts file. This is a hidden file stored in a hidden directory named /.ssh/known_hosts in the user's home directory by default. Once the host key is stored in the known_hosts file, the client system can reconnect directly to that server without any confirmation required; the host key verifies the connection identity.</p>
+      <h4>SSH vs. SSL/TLS</h4>
+      <p>The Transport Layer Security (TLS) protocol—the current version of the Secure Sockets Layer (SSL) protocol—is designed to provide security for network transfers at the transport layer. The SSH protocol also operates at the transport layer or just above it, but there are important differences between the two protocols.</p>
+      <p>While both rely on public/private key pairs to authenticate hosts, under TLS, only the server's identity is authenticated with a key pair. SSH uses a separate key pair to authenticate each connection: one key pair for the connection from the local machine to the remote machine and a second key pair to authenticate the connection from the remote machine to the local machine.</p>
+      <p>Another difference between SSH and TLS is that TLS allows connections to be encrypted without authentication or authentication to be performed without encryption. SSH encrypts and authenticates all connections.</p>
+      <p>SSH provides IT and information security (infosec) professionals with a secure mechanism for managing SSH clients remotely. Instead of requiring password authentication to initiate a connection between an SSH client and server, SSH authenticates the devices. This allows IT personnel to establish connections with remote systems and change SSH configurations, including adding or removing host key pairs in the known_hosts file.</p>
+      <h4>Sources</h4>
       <div class="blog-sources">
         <h4>Book</h4>
         <ul>
@@ -414,21 +537,206 @@ const blogPosts = [
       </div>
     `,
       en: `
-      <h2>Git</h2>
+     <h2>Git</h2>
+      <p><strong>Yusuf Yılmaz</strong></p>
+      <p>9 min read · Jul 25, 2022</p>
+      <img src="images/blog/2/1.png" alt="Git" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
       <h3>What is Git?</h3>
-      <p>Git is a version control system designed and used by Linus Torvalds to develop the Linux kernel. Version control systems are software tools that help software teams manage changes they make over time - versioning projects and navigating between versions.</p>
-      <p><strong>What makes Git so popular?</strong></p>
+      <p>Git is a version control system designed by Linus Torvalds to develop the Linux kernel. Wait a minute, what does that even mean?</p>
+      <p>Version control systems are software tools that help software teams manage changes made to code over time. In other words, it is a structure used for versioning the changes you make in a project and navigating between these versions.</p>
+      <p><strong>So, what makes Git so popular?</strong></p>
       <ul>
-        <li>Fast performance</li>
-        <li>Support for hundreds of different development branches</li>
-        <li>Works smoothly on large-scale projects</li>
-        <li>Used by very popular platforms like GitHub</li>
+        <li>It is fast</li>
+        <li>It provides a development environment across hundreds of different branches</li>
+        <li>It handles large-scale projects with ease</li>
+        <li>It is used by very popular software platforms like GitHub</li>
       </ul>
-      <p><em>Note: Full technical content available in Turkish. Complete English translation coming soon.</em></p>
+      <p>These are the things that make Git popular. If you want to learn how to use Git too, let’s get started.</p>
+      <img video-src="images/blog/2/2.mp4" poster-src="images/blog/2/video-poster.png"></img>
+      <small>wait wait wait</small>
+      <p>Before we start, I believe learning this structure will be very helpful.</p>
+      
+      <img src="images/blog/2/3.png" alt="Git Structure" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>We can call the <strong>working directory</strong> the folder environment where our project is located.</p>
+      <p>We can think of the <strong>staging area</strong> (index) as the place where we keep our changes before moving them to the .git directory.</p>
+      <p>The <strong>.git directory</strong> is the folder where we move (commit) the changes we are sure of. Later, we will push these files to remote repositories, but that’s not all.</p>
+      <p>As we said, Git is a version control system; to track who made which change, we need to configure Git's settings.</p>
+      <img video-src="images/blog/2/4.mp4" poster-src="images/blog/2/video-poster.png"></img>
+      <small>Opening our command line.</small>
+      <p>First of all, if Git is not installed on your computer, you need to download and install it from this link.</p>
+      <h4>git config</h4>
+      <img src="images/blog/2/5.png" alt="Git Config" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>As seen above, we told Git our email address using git config. We need to do the same for the name variable.</p>
+      <pre><code>git config — global user.name ‘yourname’</code></pre>
+      <h4>git init</h4>
+      <p>This command signifies that the current folder can now be tracked by Git. It creates a hidden empty folder named .git inside the directory (.git directory).</p>
+      <img src="images/blog/2/6.png" alt="Git Init" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>We used ls –a to see all hidden and open content in the directory; the .git/ folder appeared.</small>
+      <h4>git add &lt;filename&gt;</h4>
+      <p>With this command, we save the changes we made in the Working Directory (WD) to the Staging Area (SA/index).</p>
+      <img src="images/blog/2/7.png" alt="Git Add" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>We created 3 .txt files using the touch command. To save them to the index, we could add them one by one or all at once using 'git add .' as seen in the last line. Note that Git is case-sensitive.</p>
+      <h4>.gitignore</h4>
+      <p>This file provides vital functionality. It is used to prevent files and information that we don't want to upload to remote servers—such as API keys or node_modules—from being pushed. We need to create a file named .gitignore in our project and write the names of the files we don't want to be uploaded inside it.</p>
+      <img src="images/blog/2/8.png" alt="Gitignore" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>Git no longer has a relationship with these files.</small>
+      <h4>git status</h4>
+      <p>With this command, we get information about the status of our changes in the staging area.</p>
+      <img src="images/blog/2/9.png" alt="Git Status" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>As seen, I added 3 new files to the index, deleted one, and modified another. Two suggestions appear in the descriptions above:</p>
+      <ol>
+        <li>git rm — -cached &lt;file&gt;<br>
+        Using this command, we can unstage a file we no longer want to track. We can use git add again if we wish.</li>
+        <li>git restore &lt;file&gt;<br>
+        Using this command, we can revert the changes made to a staged file back to its state in the last commit.</li>
+      </ol>
+      <h4>git commit</h4>
+      <p>We moved our files from WD to the index using git add. Now we will transfer these files to the local repo (.git directory) using git commit. This process is called committing.</p>
+      <img src="images/blog/2/10.png" alt="Git Commit" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>We add a message feature to our commit using -m.</p>
+      <h4>git log</h4>
+      <p>With this command, we can access our commit history.</p>
+      <img src="images/blog/2/11.png" alt="Git Log" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>The message we wrote during the commit process appears here.</small>
+      <p>As seen, we get information about the commit date and the person who made the commit along with the commit message. We encounter 3 different concepts above:</p>
+      <ul>
+        <li><strong>Hashcode:</strong> Every commit has a unique hash value, and we use these hashes in Git commands like diff, checkout, revert, reset, etc.</li>
+        <li><strong>Head:</strong> Shows where we are. It generally points to the last commit. That is, your latest change is highlighted with the Head label.</li>
+        <li><strong>Branch:</strong> We can think of branches as different working folders. Multiple branches can be created in every project to develop different structures and merge them at the appropriate time (without conflicts).</li>
+      </ul>
+      <h4>git branch</h4>
+      <p>You can view existing branches with this command.</p>
+      <pre><code>git branch &lt;branchname&gt;</code></pre>
+      <p>You can create a new branch with this command.</p>
+      <img src="images/blog/2/12.png" alt="Git Branch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git switch &lt;branchname&gt;</h4>
+      <p>You can switch between branches with this command.</p>
+      <img src="images/blog/2/13.png" alt="Git Switch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git branch -d &lt;branchname&gt;</h4>
+      <p>You can delete a branch you created with this command.</p>
+      <img src="images/blog/2/14.png" alt="Git Delete Branch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>Since we often work with multiple team members, we work on different branches. When we want to merge these branches with the project's main branch, we use the git merge feature. We must act very carefully at this point because conflicts can ruin the project.</p>
+      <p><strong>What could these conflicts be?</strong><br>
+      For example; if we modify a file in the 'feat' branch that was opened in the 'master' branch, but delete that same file in 'master', it creates a conflict. Git cannot perform the automatic merge here. We can fix this conflict by making a new commit.</p>
+      <img src="images/blog/2/15.png" alt="Git Conflict" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git merge</h4>
+      <p>Used to combine two branches. If there is no conflict, the merge process succeeds.</p>
+      
+      <img src="images/blog/2/16.png" alt="Git Merge" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>Each letter represents a commit and each line represents a branch.</small>
+      <p>If we run 'git merge feat' while on the master branch, our feat branch merges with master and reaches the state below.</p>
+      <img src="images/blog/2/17.png" alt="Git Merge Result" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>A merge commit named 'h' was created.</small>
+      <h4>Fast Forward</h4>
+      <p>If we create a new branch and continue committing there while no changes are made to the master branch, merging these branches will result in "fast forwarding" since they can combine without any conflicts.</p>
+      <img src="images/blog/2/18.png" alt="Git Fast Forward" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git stash</h4>
+      <p>This command is used to prevent losing changes when:<br>
+      We are not ready to commit,<br>
+      We have to switch branches, or<br>
+      We don't want to save the changes yet.<br>
+      The changes are stored in a memory area called 'stash'.</p>
+      <img src="images/blog/2/19.png" alt="Git Stash" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git stash pop</h4>
+      <p>Used to bring back the changes we added to the stash.</p>
+      <h4>git stash list</h4>
+      <p>With this command, we can access all our records in the stash.</p>
+      <img src="images/blog/2/20.png" alt="Git Stash List" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <h4>git stash apply</h4>
+      <p>With this command, we can apply all our stash records, or we can add them one by one by adding the stash ID to the end of the command.</p>
+      <h4>git stash clear</h4>
+      <p>With this command, we can clear all our records in the stash.</p>
+      <h4>git checkout &lt;hashcode&gt;</h4>
+      <p>We previously learned how to go back on operations with git add. This time we will see how to go back to commits. This command allows us to return to previous commits.</p>
+      <img src="images/blog/2/21.png" alt="Git Checkout Hash" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>We wrote the hash of the commit we wanted to return to next to checkout, and the Head status changed. Git tells us this is a "detached Head" state and asks us to fix it.</p>
+      <h4>Detached Head</h4>
+      [Image explaining Git detached HEAD state]
+      <img src="images/blog/2/22.png" alt="Detached Head" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>As seen in the figure above, if we return to commit C, our Head will point to C, but commit D is still our last commit.</p>
+      <p>In this case, there are 2 things we can do to get out of DH:</p>
+      <ol>
+        <li>We can fix this by returning to master (git switch master).</li>
+        <li>We can open a new branch and continue from there.</li>
+      </ol>
+      <img src="images/blog/2/23.png" alt="Git Switch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>branch feat > git switch feat > git add . > git commit</small>
+      <img src="images/blog/2/24.png" alt="Git Log History" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>This log record should be followed to go back in commit processes.</small>
+      <h4>git reset &lt;hashcode&gt;</h4>
+      <p>I am currently at the 3rd commit and I want to go back to the 2nd. In this case, by writing 'git reset [2nd commit hash]', I delete the commits after the second one from the log.</p>
+      <p>But the changes I made will still remain saved in my file. If I want to delete both states, I need to run my code as: git reset –-hard &lt;hashcode&gt;.</p>
+      <img src="images/blog/2/25.png" alt="Git Reset" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>Returned to commit B.</small>
+      <h4>git revert &lt;hashcode&gt;</h4>
+      <p>I want to undo the 3rd commit but I don't want to interfere with the commit log and I want to continue from the same branch. In this case, by writing 'git revert [3rd commit hash]', we go back and complete this with a new commit.</p>
+      <img src="images/blog/2/26.png" alt="Git Revert" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>I reverted commit C, but the record for commit C was not deleted, and a new commit was created stating that I performed a revert.</small>
+      <h4>git diff</h4>
+      <p>It is used to view answers to questions such as:<br>
+      What did we change between which commits?<br>
+      What happened between which commits?<br>
+      What happened between which branches?<br>
+      What were the differences between the working directory and staging area?</p>
+      <img src="images/blog/2/27.png" alt="Git Diff" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>Lines with — represent removals, while + represents additions.</small>
+      <p>We can also see the difference between commits by running 'git diff 1.hash 2.hash ...'.</p>
+      <p>With 'git diff Head', we can see what we changed compared to the last commit.</p>
+      <h4>git rebase</h4>
+      [Image comparing Git merge vs rebase]
+      <img src="images/blog/2/28.png" alt="Git Rebase" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>A command used to get rid of merge commits. Our repo looks like the example above.</p>
+      <p>Now let's go to GitHub (or whichever app you use) and create a new repo there.</p>
+      <p>We need to give our project a name and determine the visibility level. There are 2 options: Public and Private. As the name suggests, Public ones can be viewed by all Internet users. Private ones can only be viewed by us and the people we grant permission to.</p>
+      <p>Also, while creating the project, it asks if we want to add a README.md file; this file contains descriptions of the project.</p>
+      <h4>git remote</h4>
+      <img src="images/blog/2/29.png" alt="Git Remote" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>Using the 'git remote add origin <remoteUrl>' command, we can now add our local branches and changes to a repo on a remote server, or bring changes from there to local.</p>
+      <p>Here, the word 'origin' is an alias, meaning a nickname that represents our URL. It is used in push and pull operations. We could use a different word instead of 'origin', but we use it because it is more common.</p>
+      <h4>git push origin &lt;branchname&gt;</h4>
+      <p>This process allows us to transfer our commits in the local repo to the remote repo.</p>
+      <img src="images/blog/2/30.png" alt="Git Push" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>By doing 'git push origin feat', we have now transferred all our changes to the feat branch on the remote.</small>
+      <p>We can see branches on remote with 'git branch –r'.</p>
+      <h4>Pull Request</h4>
+      <p>As a developer, we made changes in our own branch and we want it to be merged with the main branch of the product. We make a request to the admin of the main branch by opening a Pull Request on GitHub or a Merge Request on GitLab. If the admin wishes, they can review the code and merge it or close the PR.</p>
+      <p>Let's assume the PR is approved by the admin.</p>
+      <h4>git pull / fetch</h4>
+      <p>Since we performed this operation on remote, our local Git operations are behind the remote. In this case, our remote repo will be ahead of our local repo. We need to use pull and fetch commands to synchronize them.</p>
+      <p><strong>Fetch:</strong> Brings changes to local and allows us to view them.</p>
+      <p><strong>Pull:</strong> Both brings these changes to local and performs the merge process.</p>
+      <h4>git fetch</h4>
+      <img src="images/blog/2/31.png" alt="Git Fetch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>When I say 'git fetch origin master', the changes arrive, but when I look at the git log, I see that the Merge commit is not there. If I go to the origin master branch on remote, I can view them.</p>
+      <p>Let's go.</p>
+      <img src="images/blog/2/32.png" alt="Git Remote Branch" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>First, we check our remote branches. When we do 'git switch origin/master', it tells us this is a remote branch. Now we learn the new use of checkout; we need to switch to remote branches with checkout.</p>
+      <img src="images/blog/2/33.png" alt="Git Log Merge" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>We can view the merge commit by doing git log.</small>
+      <h4>git pull</h4>
+      <p>git pull = git fetch + git merge, so it brings all changes completely to local. The reason we use fetch is for checking purposes to see if there is an issue.</p>
+      <img src="images/blog/2/34.png" alt="Git Pull" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>As seen above, with the pull process, changes on remote arrived and it is now synchronized with GitLab and our local.</p>
+      <h4>git pull — prune</h4>
+      <p>Let's assume the branch we merged in the PR process was deleted as an option.</p>
+      <img src="images/blog/2/35.png" alt="Git Prune" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <small>When we do 'git branch –r', the origin/feat branch still appears.</small>
+      <p>We can delete this with 'git branch –d'. Or we can automatically eliminate redundant branches by using the 'prune' keyword while performing the pull process.</p>
+      <h4>git clone</h4>
+      <img src="images/blog/2/36.png" alt="Git Clone" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p>We browsed GitHub and liked a project; we want to bring it to our local. Or there is a repo we work on together; it is used to pull these projects to local.</p>
+      <p>We ran the command as 'git clone url', and now the project is in our local; we can enter the project with 'cd'. If we have permission, we can make commits to this project.</p>
+      <h4>Fork</h4>
+      <p>We liked the project. We want to make changes but we don't have permission. In this case, to make a new commit, we can fork the project and save it to our own repo. After pressing the Fork button, the project is now in our repo.</p>
+      <p>We can bring it to local with 'git clone' and make new commits. To show the new commits to the project owner, we can make pull/merge requests. In this way, we contribute to the project through a longer path.</p>
+      <h4>Issues</h4>
+      <p>Issues can be bugs we found, new ideas, or discussions. We can start this by opening it from the issues section of the project on GitHub or GitLab.</p>
+      <p>You can find more detailed information from the references used while preparing this article below.</p>
+      <p>Thanks for reading.</p>
       <div class="blog-sources">
         <h4>References</h4>
         <ul>
-          <li><a href="https://www.btkakademi.gov.tr" target="_blank">BTK Academy - Version Control: Git and GitHub</a></li>
+          <li><a href="https://www.btkakademi.gov.tr" target="_blank">BTK Academy - Version Controls: Git and GitHub</a></li>
           <li><a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git Book (git-scm.com)</a></li>
         </ul>
       </div>
@@ -593,11 +901,122 @@ images.appendChild(box);
     `,
       en: `
       <h2>Using the TMDB API</h2>
+      <img src="images/blog/3/1.png" alt="TMDB API" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
+      <p><strong>Yusuf Yılmaz</strong></p>
+      <p>4 min read · Apr 5, 2022</p>
+      <p>Hello! In this post, we will design a web page together that lists popular movies by using an API.<br>
+      First, let's briefly look at what an API is.</p>
+      
+      <img src="images/blog/3/2.png" alt="TMDB API" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
       <h3>What is an API?</h3>
-      <p>An API allows two applications to exchange data and communicate with each other. It enables one application's functionality to be used by other applications.</p>
+      <p>An API allows two applications to exchange data and communicate with each other. It enables the functionality of one application to be used by other applications.<br>
+      Think of the weather app on your phone. The weather app communicates with the server of the application that provides this data and displays the information within the app. This is what we call an API, but we will focus specifically on web-based APIs.<br>
+      Web APIs return data in JSON or XML format. We design our applications using this returned data.</p>
       <h3>Which API will we use?</h3>
-      <p>In this article, we'll use a movie API. We'll be using the TMDB API which requires an API key.</p>
-      <p><em>Note: Full technical tutorial available in Turkish. Complete English translation coming soon.</em></p>
+      <p>In this post, we will use a movie API, but you might want to use different APIs. You can access many categorized APIs from this GitHub link. We will be using the TMDB API.<br>
+      While some APIs do not require a key, others might. The one we are using requires an API key.</p>
+      <h3>Getting a Key from TMDB API</h3>
+      <p>To use the TMDB API, we first need to sign up at this link.<br>
+      Then, click on Settings > API to request a key. You will be presented with two options: whether you need it as a developer or a professional. Select "Developer" and accept the terms. Finally, it will ask for information such as "Where?" and "Why?" you will use it. Fill in the required details and...</p>
+      <img video-src="images/blog/3/3.mp4" poster-src="images/blog/3/video-poster.png"></img>
+      <p>...now we have a key! We can develop our application using the data provided by TMDB. You can see how to access specific data from the link provided there.</p>
+      <h3>Now, the Design</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+ &lt;head&gt;
+ &lt;meta charset="UTF-8" /&gt;
+ &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+ &lt;title&gt;my movie web site&lt;/title&gt;
+&lt;link rel="stylesheet" href="pop.css" /&gt;
+ &lt;link
+ rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" /&gt;&lt;/head&gt;
+&lt;body&gt;
+ &lt;div class="control"&gt;
+ &lt;button id="previous"&gt;&lt;i class="fa-solid fa-angles-left"&gt;&lt;/i&gt;&lt;/button&gt;
+ &lt;div class="images"&gt; 
+ &lt;/div&gt;
+ &lt;button id="next"&gt;&lt;i class="fa-solid fa-angles-right"&gt;&lt;/i&gt;&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div id="movie-details" class="movie-details hide"&gt;
+ &lt;/div&gt; 
+&lt;script src="pop.js"&gt;&lt;/script&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>The data we fetch will be placed inside the div with the "images" class.</p>
+      <h3>JavaScript Code</h3>
+      <p>Now, let's write our API key and the necessary URLs in the JS file:</p>
+      <pre><code>let page = 1;
+const APIKEY = "your_api_key_here";
+// URL to access popular movies
+const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+// Additional URL required to display movie posters
+const IMGPATH = \`https://image.tmdb.org/t/p/w1280/\`;</code></pre>
+      <p>Let's add the HTML tags and pagination logic:</p>
+      <pre><code>// HTML elements to manipulate
+const images = document.querySelector(".images");
+const nextBtn = document.getElementById("next");
+const previousBtn = document.getElementById("previous");
+
+// next page button
+nextBtn.addEventListener("click", () => {
+  images.innerHTML = "";
+  page++;
+  if (page > 500) {
+    page = 1;
+  }
+  const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+  getPopMovies(URL);
+});
+
+// previous page button
+previousBtn.addEventListener("click", () => {
+  images.innerHTML = "";
+  page--;
+  if (page < 1) {
+    page = 500;
+  }
+  const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&language=en-US&page=\${page}\`;
+  getPopMovies(URL);
+});</code></pre>
+      <h3>Fetching the URL</h3>
+      <pre><code>// getting popular movies from API
+const getPopMovies = (url) => {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      showMovies(data);
+    })
+};</code></pre>
+      <p>As seen above, we passed our URL into the <code>fetch()</code> command. The <code>fetch()</code> method starts the process of fetching a resource from the network, returning a promise that is fulfilled once the response is available. Since the initial promise is not in JSON format, we convert it to JSON using the <code>json()</code> command. The <code>json()</code> method returns a second promise. We handle these processes using the <code>then()</code> command, which allows us to handle whether the promise was successful (resolve) or not (reject). If the second promise is also successful, we pass the movies as a parameter to the <code>showMovies()</code> function to display them on the screen.</p>
+      <pre><code>// showing movies on body
+const showMovies = (data) => {
+  if (data.results !== null) {
+    data.results.forEach((e) => {
+      const { title: t, poster_path: p, vote_average: v, release_date: d, id: i } = e;
+      let box = document.createElement("div");
+      box.classList.add("box");
+      box.innerHTML = \`
+        &lt;h1 id="title"&gt;\${t}&lt;/h1&gt;
+        &lt;button class="savelater"&gt;&lt;i class="fa-solid fa-bookmark"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;img class="all-images" src="\${IMGPATH + p}" /&gt;
+        &lt;div class="info"&gt;
+          &lt;h3&gt;\${d.slice(0, 4)}&lt;/h3&gt;
+          &lt;h3&gt;\${v}&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;button class="details up"&gt;&lt;i class="fa-solid fa-angles-up"&gt;&lt;/i&gt;&lt;/button&gt;
+      \`;
+      images.appendChild(box);
+    });
+  }
+};</code></pre>
+      <p>First, we check if the <code>results</code> property of the <code>data</code> parameter we received from <code>getPopMovies()</code> is null. We use a <code>forEach</code> loop to access the data within <code>data.results</code>. To access the data more easily, we use Object Destructuring to get the movie's poster, title, rating, and release date. We add this data into the div we created using <code>innerHTML</code>. Finally, we add these HTML snippets into the previously mentioned "images" container by using <code>images.appendChild(box)</code>. Now, let's beautify our code with some CSS and look at the final version.</p>
+      <p>Sugar, spice and everything nice!</p>
+      <img video-src="images/blog/3/4.mp4" poster-src="images/blog/3/video-poster.png"></img>
+      <p>Here is the final state of our site:</p>
+      <img video-src="images/blog/3/5.mp4" poster-src="images/blog/3/video-poster.png"></img>
+      <p>Adding features like Search or Genre filtering to make it more effective is up to you! :) Thank you for joining me in this post, and have a great day.</p>
       <div class="blog-sources">
         <h4>References</h4>
         <ul>

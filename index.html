@@ -38,10 +38,10 @@
       </div>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="nav-link active">Ana Sayfa</a></li>
-        <li><a href="about.html" class="nav-link">Hakkımda</a></li>
-        <li><a href="blog.html" class="nav-link">Blog</a></li>
-        <li><a href="contact.html" class="nav-link">İletişim</a></li>
+        <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav.about">Hakkımda</a></li>
+        <li><a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">İletişim</a></li>
       </ul>
     </div>
   </nav>
@@ -50,24 +50,24 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <span class="hero-subtitle">Frontend Developer</span>
+        <span class="hero-subtitle" data-i18n="hero.subtitle">Frontend Developer</span>
         <h1 class="hero-title">
-          Merhaba, ben <br><span class="highlight">Yusuf Yılmaz</span>
+          <span data-i18n="hero.title_prefix">Merhaba, ben</span> <br><span class="highlight">Yusuf Yılmaz</span>
         </h1>
-        <p class="hero-description">
+        <p class="hero-description" data-i18n="hero.description">
           Modern web teknolojileriyle kullanıcı odaklı, performanslı ve ölçeklenebilir arayüzler geliştiriyorum. React,
           Next.js ve TypeScript ile çalışıyorum.
         </p>
         <div class="hero-buttons">
-          <a href="about.html" class="btn btn-primary">Hakkımda</a>
-          <a href="contact.html" class="btn btn-secondary">İletişime Geç</a>
+          <a href="about.html" class="btn btn-primary" data-i18n="hero.btn_about">Hakkımda</a>
+          <a href="contact.html" class="btn btn-secondary" data-i18n="hero.btn_contact">İletişime Geç</a>
         </div>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
-      <span>Aşağı Kaydır</span>
+      <span data-i18n="hero.scroll">Aşağı Kaydır</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
@@ -78,19 +78,19 @@
   <section class="section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Hakkımda</span>
-        <h2 class="section-title">Kısaca Ben</h2>
+        <span class="section-tag" data-i18n="about_preview.tag">Hakkımda</span>
+        <h2 class="section-title" data-i18n="about_preview.title">Kısaca Ben</h2>
       </div>
 
       <div class="about-grid">
         <div class="fade-in-left">
-          <p class="about-bio">
+          <p class="about-bio" data-i18n="about_preview.bio">
             İstanbul'te yaşayan, <strong>4+ yıllık deneyime</strong> sahip bir Frontend Developer'ım.
             E-ticaret projeleri, dashboard ve admin panelleri üzerinde çalıştım.
             <span class="text-neon-green">Temiz kod</span>, modern UI/UX ve performans optimizasyonu konularına önem
             veriyorum.
           </p>
-          <a href="about.html" class="btn btn-primary mt-lg">Daha Fazla Bilgi</a>
+          <a href="about.html" class="btn btn-primary mt-lg" data-i18n="about_preview.btn_more">Daha Fazla Bilgi</a>
         </div>
 
         <div class="skills-grid stagger-children fade-in-right">
@@ -139,9 +139,9 @@
   <section class="section" style="background: var(--color-bg-secondary);">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Pure CSS Art</span>
-        <h2 class="section-title">CSS Çizimlerim</h2>
-        <p class="page-subtitle" style="margin-top: 1rem;">Sadece HTML ve CSS kullanarak oluşturduğum sanat çalışmaları
+        <span class="section-tag" data-i18n="css_art.tag">Pure CSS Art</span>
+        <h2 class="section-title" data-i18n="css_art.title">CSS Çizimlerim</h2>
+        <p class="page-subtitle" style="margin-top: 1rem;" data-i18n="css_art.subtitle">Sadece HTML ve CSS kullanarak oluşturduğum sanat çalışmaları
         </p>
       </div>
 
@@ -150,7 +150,7 @@
       </div>
 
       <div class="text-center mt-lg fade-in" style="text-align: center;">
-        <a href="https://codepen.io/yusufyilmaz_" target="_blank" class="btn btn-secondary">Tüm Çalışmaları Gör</a>
+        <a href="https://codepen.io/yusufyilmaz_" target="_blank" class="btn btn-secondary" data-i18n="css_art.btn_all">Tüm Çalışmaları Gör</a>
       </div>
     </div>
   </section>
@@ -159,8 +159,8 @@
   <section class="section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">Blog</span>
-        <h2 class="section-title">Son Yazılar</h2>
+        <span class="section-tag" data-i18n="featured_blog.tag">Blog</span>
+        <h2 class="section-title" data-i18n="featured_blog.title">Son Yazılar</h2>
       </div>
 
       <div class="blog-grid" id="featured-blogs">
@@ -168,7 +168,7 @@
       </div>
 
       <div class="text-center mt-lg fade-in" style="text-align: center;">
-        <a href="blog.html" class="btn btn-secondary">Tüm Yazıları Gör</a>
+        <a href="blog.html" class="btn btn-secondary" data-i18n="featured_blog.btn_all">Tüm Yazıları Gör</a>
       </div>
     </div>
   </section>
@@ -215,7 +215,7 @@
           </a>
         </div>
 
-        <p class="footer-text">
+        <p class="footer-text" data-i18n="footer.text">
           © 2026 Yusuf Yılmaz. Tüm hakları saklıdır.
         </p>
       </div>
@@ -223,6 +223,9 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
   <script src="js/blog.js"></script>
   <script src="js/main.js"></script>
 </body>

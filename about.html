@@ -45,10 +45,10 @@
         </div>
 
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
-          <li><a href="about.html" class="nav-link active">Hakkımda</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
-          <li><a href="contact.html" class="nav-link">İletişim</a></li>
+          <li><a href="index.html" class="nav-link" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a href="about.html" class="nav-link active" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">İletişim</a></li>
         </ul>
       </div>
     </nav>
@@ -56,9 +56,9 @@
     <!-- Page Header -->
     <header class="page-header">
       <div class="container">
-        <span class="section-tag fade-in">Hakkımda</span>
-        <h1 class="page-title fade-in">Ben Kimim?</h1>
-        <p class="page-subtitle fade-in">
+        <span class="section-tag fade-in" data-i18n="about_page.header.tag">Hakkımda</span>
+        <h1 class="page-title fade-in" data-i18n="about_page.header.title">Ben Kimim?</h1>
+        <p class="page-subtitle fade-in" data-i18n="about_page.header.subtitle">
           Frontend Developer • İstanbul, Türkiye
         </p>
       </div>
@@ -69,18 +69,18 @@
       <div class="container">
         <div class="about-grid">
           <div class="fade-in-left">
-            <h2 class="mb-md">Merhaba! 👋</h2>
-            <p class="about-bio mb-md">
+            <h2 class="mb-md" data-i18n="about_page.bio.title">Merhaba! 👋</h2>
+            <p class="about-bio mb-md" data-i18n="about_page.bio.p1">
               Modern web teknolojileriyle kullanıcı odaklı, performanslı ve
               ölçeklenebilir arayüzler geliştiren bir
               <span class="text-neon-green">Frontend Developer</span>'ım.
             </p>
-            <p class="about-bio mb-md">
+            <p class="about-bio mb-md" data-i18n="about_page.bio.p2">
               Özellikle <strong>e-ticaret projeleri</strong>, dashboard ve admin
               panelleri üzerinde çalıştım. Temiz kod, modern UI/UX ve performans
               optimizasyonu konularına önem veriyorum.
             </p>
-            <p class="about-bio">
+            <p class="about-bio" data-i18n="about_page.bio.p3">
               Şu anda <strong>TostBang</strong>'de Frontend Developer olarak
               çalışıyorum. Next.js ile SSR projeleri, SEO optimizasyonları ve
               Docker ile containerization süreçlerinde aktif rol alıyorum.
@@ -89,10 +89,10 @@
 
           <div class="fade-in-right">
             <div class="card">
-              <h4 class="card-title mb-md text-neon-cyan">📍 Konum</h4>
-              <p>İstanbul, Türkiye</p>
+              <h4 class="card-title mb-md text-neon-cyan" data-i18n="about_page.bio.location">📍 Konum</h4>
+              <p data-i18n="about_page.bio.location_val">İstanbul, Türkiye</p>
 
-              <h4 class="card-title mb-md mt-lg text-neon-cyan">📧 E-posta</h4>
+              <h4 class="card-title mb-md mt-lg text-neon-cyan" data-i18n="about_page.bio.email">📧 E-posta</h4>
               <p>
                 <a
                   href="mailto:yusufylmaz15@gmail.com"
@@ -101,7 +101,7 @@
                 >
               </p>
 
-              <h4 class="card-title mb-md mt-lg text-neon-cyan">📱 Telefon</h4>
+              <h4 class="card-title mb-md mt-lg text-neon-cyan" data-i18n="about_page.bio.phone">📱 Telefon</h4>
               <p>+90 537 255 30 88</p>
             </div>
           </div>
@@ -113,8 +113,8 @@
     <section class="section" style="background: var(--color-bg-secondary)">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Yetenekler</span>
-          <h2 class="section-title">Kullandığım Teknolojiler</h2>
+          <span class="section-tag" data-i18n="about_page.skills.tag">Yetenekler</span>
+          <h2 class="section-title" data-i18n="about_page.skills.title">Kullandığım Teknolojiler</h2>
         </div>
 
         <div class="skills-grid stagger-children">
@@ -198,17 +198,17 @@
     <section class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Deneyim</span>
-          <h2 class="section-title">İş Tecrübem</h2>
+          <span class="section-tag" data-i18n="about_page.experience.tag">Deneyim</span>
+          <h2 class="section-title" data-i18n="about_page.experience.title">İş Tecrübem</h2>
         </div>
 
         <div class="timeline">
           <!-- TostBang -->
           <div class="timeline-item fade-in">
             <span class="timeline-date">05/2024 – Günümüz</span>
-            <h3 class="timeline-title">Frontend Developer</h3>
+            <h3 class="timeline-title" data-i18n="about_page.experience.tostbang_title">Frontend Developer</h3>
             <p class="timeline-company">TostBang</p>
-            <ul class="timeline-description">
+            <ul class="timeline-description" data-i18n="about_page.experience.tostbang_desc">
               <li>E-ticaret odaklı frontend projelerinde aktif rol</li>
               <li>Next.js ile SSR ve dynamic routing kullanımı</li>
               <li>Ürün, sepet ve checkout akışlarının geliştirilmesi</li>
@@ -221,9 +221,9 @@
           <!-- Privia Security - Developer -->
           <div class="timeline-item fade-in">
             <span class="timeline-date">11/2022 – 05/2024</span>
-            <h3 class="timeline-title">Frontend Developer</h3>
+            <h3 class="timeline-title" data-i18n="about_page.experience.privia_title">Frontend Developer</h3>
             <p class="timeline-company">Privia Security</p>
-            <ul class="timeline-description">
+            <ul class="timeline-description" data-i18n="about_page.experience.privia_desc">
               <li>PriviaHub platformunun yeniden geliştirilmesinde görev</li>
               <li>React, Next.js ve TypeScript ile modüler mimari</li>
               <li>Dashboard, analytics ve admin panelleri</li>
@@ -236,9 +236,9 @@
           <!-- Privia Security - Intern -->
           <div class="timeline-item fade-in">
             <span class="timeline-date">07/2022 – 11/2022</span>
-            <h3 class="timeline-title">Frontend Intern</h3>
+            <h3 class="timeline-title" data-i18n="about_page.experience.privia_intern_title">Frontend Intern</h3>
             <p class="timeline-company">Privia Security</p>
-            <ul class="timeline-description">
+            <ul class="timeline-description" data-i18n="about_page.experience.privia_intern_desc">
               <li>React.js temelleri</li>
               <li>SCSS ile modüler stiller</li>
               <li>Git ve ekip içi geliştirme süreçleri</li>
@@ -253,20 +253,20 @@
     <section class="section" style="background: var(--color-bg-secondary)">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Eğitim</span>
-          <h2 class="section-title">Eğitim Geçmişim</h2>
+          <span class="section-tag" data-i18n="about_page.education.tag">Eğitim</span>
+          <h2 class="section-title" data-i18n="about_page.education.title">Eğitim Geçmişim</h2>
         </div>
 
         <div class="education-grid">
           <div class="education-card fade-in">
             <span class="education-year">2019 – 2024</span>
-            <h3 class="education-degree">Yazılım Mühendisliği</h3>
+            <h3 class="education-degree" data-i18n="about_page.education.firat">Yazılım Mühendisliği</h3>
             <p class="education-school">Fırat Üniversitesi</p>
           </div>
 
           <div class="education-card fade-in">
             <span class="education-year">2023</span>
-            <h3 class="education-degree">Yazılım Mühendisliği (Erasmus)</h3>
+            <h3 class="education-degree" data-i18n="about_page.education.vilnius">Yazılım Mühendisliği (Erasmus)</h3>
             <p class="education-school">Vilnius Kolegija, Litvanya</p>
           </div>
         </div>
@@ -277,14 +277,14 @@
     <section class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Projeler</span>
-          <h2 class="section-title">Öne Çıkan Projeler</h2>
+          <span class="section-tag" data-i18n="about_page.projects.tag">Projeler</span>
+          <h2 class="section-title" data-i18n="about_page.projects.title">Öne Çıkan Projeler</h2>
         </div>
 
         <div class="projects-grid">
           <div class="project-card fade-in">
             <h3 class="project-title">🎬 Movie App</h3>
-            <p class="card-description">
+            <p class="card-description" data-i18n="about_page.projects.movie_desc">
               TMDb API kullanılarak geliştirilen film inceleme uygulaması
             </p>
             <div class="project-tech">
@@ -297,7 +297,7 @@
 
           <div class="project-card fade-in">
             <h3 class="project-title">🎨 CSS Character Drawings</h3>
-            <p class="card-description">
+            <p class="card-description" data-i18n="about_page.projects.css_desc">
               Pure HTML & CSS ile karakter çizimleri ve animasyonlar
             </p>
             <div class="project-tech">
@@ -309,7 +309,7 @@
 
           <div class="project-card fade-in">
             <h3 class="project-title">🧩 LeetCode Solutions</h3>
-            <p class="card-description">
+            <p class="card-description" data-i18n="about_page.projects.leetcode_desc">
               JavaScript ile algoritma ve veri yapıları çözümleri
             </p>
             <div class="project-tech">
@@ -394,12 +394,15 @@
             </a>
           </div>
 
-          <p class="footer-text">© 2026 Yusuf Yılmaz. Tüm hakları saklıdır.</p>
+          <p class="footer-text" data-i18n="footer.text">© 2026 Yusuf Yılmaz. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

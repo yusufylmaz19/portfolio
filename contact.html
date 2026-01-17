@@ -25,19 +25,19 @@
         >
         <div class="nav-toggle"><span></span><span></span><span></span></div>
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
-          <li><a href="about.html" class="nav-link">Hakkımda</a></li>
-          <li><a href="blog.html" class="nav-link">Blog</a></li>
-          <li><a href="contact.html" class="nav-link active">İletişim</a></li>
+          <li><a href="index.html" class="nav-link" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="contact.html" class="nav-link active" data-i18n="nav.contact">İletişim</a></li>
         </ul>
       </div>
     </nav>
 
     <header class="page-header">
       <div class="container">
-        <span class="section-tag fade-in">İletişim</span>
-        <h1 class="page-title fade-in">Bana Ulaşın</h1>
-        <p class="page-subtitle fade-in">
+        <span class="section-tag fade-in" data-i18n="contact_page.header.tag">İletişim</span>
+        <h1 class="page-title fade-in" data-i18n="contact_page.header.title">Bana Ulaşın</h1>
+        <p class="page-subtitle fade-in" data-i18n="contact_page.header.subtitle">
           Proje teklifleriniz veya sorularınız için iletişime geçin
         </p>
       </div>
@@ -48,7 +48,7 @@
         <div class="contact-grid">
           <!-- Contact Info -->
           <div class="fade-in-left">
-            <h3 class="mb-md">İletişim Bilgileri</h3>
+            <h3 class="mb-md" data-i18n="contact_page.info.title">İletişim Bilgileri</h3>
             <div class="contact-info">
               <div class="contact-item">
                 <svg
@@ -104,11 +104,11 @@
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>İstanbul, Türkiye</span>
+                <span data-i18n="about_page.bio.location_val">İstanbul, Türkiye</span>
               </div>
             </div>
 
-            <h3 class="mb-md mt-lg">Sosyal Medya</h3>
+            <h3 class="mb-md mt-lg" data-i18n="contact_page.info.social_title">Sosyal Medya</h3>
             <div class="social-links" style="justify-content: flex-start">
               <a
                 href="https://github.com/yusufylmaz19"
@@ -155,45 +155,48 @@
           <!-- Contact Form -->
           <div class="fade-in-right">
             <form id="contact-form" class="card">
-              <h3 class="mb-md">Mesaj Gönderin</h3>
+              <h3 class="mb-md" data-i18n="contact_page.form.title">Mesaj Gönderin</h3>
 
               <div class="form-group">
-                <label for="name" class="form-label">Adınız</label>
+                <label for="name" class="form-label" data-i18n="contact_page.form.name_label">Adınız</label>
                 <input
                   type="text"
                   id="name"
                   class="form-input"
                   placeholder="Adınızı girin"
+                  data-i18n="contact_page.form.name_placeholder"
                   required
                 />
-                <span class="form-error"
+                <span class="form-error" data-i18n="contact_page.form.name_error"
                   >Lütfen geçerli bir isim girin (min. 2 karakter)</span
                 >
               </div>
 
               <div class="form-group">
-                <label for="email" class="form-label">E-posta</label>
+                <label for="email" class="form-label" data-i18n="contact_page.form.email_label">E-posta</label>
                 <input
                   type="email"
                   id="email"
                   class="form-input"
                   placeholder="E-posta adresinizi girin"
+                  data-i18n="contact_page.form.email_placeholder"
                   required
                 />
-                <span class="form-error"
+                <span class="form-error" data-i18n="contact_page.form.email_error"
                   >Lütfen geçerli bir e-posta adresi girin</span
                 >
               </div>
 
               <div class="form-group">
-                <label for="message" class="form-label">Mesajınız</label>
+                <label for="message" class="form-label" data-i18n="contact_page.form.message_label">Mesajınız</label>
                 <textarea
                   id="message"
                   class="form-textarea"
                   placeholder="Mesajınızı yazın..."
+                  data-i18n="contact_page.form.message_placeholder"
                   required
                 ></textarea>
-                <span class="form-error"
+                <span class="form-error" data-i18n="contact_page.form.message_error"
                   >Lütfen mesajınızı girin (min. 10 karakter)</span
                 >
               </div>
@@ -203,7 +206,7 @@
                 class="btn btn-primary"
                 style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px"
               >
-                Gönder
+                <span data-i18n="contact_page.form.btn_send">Gönder</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -229,11 +232,14 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <p class="footer-text">© 2026 Yusuf Yılmaz. Tüm hakları saklıdır.</p>
+          <p class="footer-text" data-i18n="footer.text">© 2026 Yusuf Yılmaz. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>
 
+    <script src="js/analytics.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

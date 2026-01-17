@@ -20,7 +20,7 @@ const blogPosts = [
       <h3>HTTP mesaj formatları</h3>
       <p>Response message ve Request message olmak üzere 2 farklı mesaj formatı vardır</p>
       <img src="images/blog/1/2.png" alt="HTTP Message Formats" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
-      <p><strong>HTTP Request Message yapısı</strong><br>
+      <small>HTTP Request Message yapısı</small>
       Öncelikle mesajın sıradan ASCII metninde yazıldığını görüyoruz, Sırdan bir bilgisayar okur yazarı bile bunu okuyabilir. İkinci olarak, mesajın her biri bir satır başı ve bir satır içeriği olarak birbirini takipeden beş satırdan oluştuğunu görüyoruz.Bu request mesajı 5 satrıdan oluşuyor ama daha fazla mesajdanda oluşabilir.</p>
       <p>HTTP request mesajını ilk satırı request satırı olarak adlandırılır.Sonraki satırlar ise Header Satırları olarak adlandırılır. Request satırı 3 alandan oluşur: Method alanı, URL alanı ve HTTP versiyon alanı.</p>
       <p>Method alanı GET,POST,PUT,DELETE,HEAD gibi değerler alabilir. En çok kullanılan GET ve POST tur. GET browser bir object için requestte bulunduğunda kullanılır.</p>
@@ -84,7 +84,7 @@ const blogPosts = [
       <p>Herhangi bir web sitesi, özellikle oturum açma kimlik bilgileri gerektirenler, HTTPS kullanmalıdır. Chrome gibi modern web tarayıcılarında, HTTPS kullanmayan web siteleri, diğerlerinden farklı olarak işaretlenir. Web sayfasının güvenli olduğunu belirtmek için URL çubuğunda yeşil bir asma kilit arayın. Web tarayıcıları HTTPS’yi ciddiye alır; Google Chrome ve diğer tarayıcılar, HTTPS olmayan tüm web sitelerini güvenli değil olarak işaretler.</p>
       <img src="images/blog/1/5.png" alt="HTTPS Not Secure Warning" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
       <h4>HTTPS nasıl çalışır?</h4>
-      <p>HTTPS, iletişimleri şifrelemek için bir şifreleme protokolü kullanır. Önceden Secure Sockets Layer (SSL) olarak bilinmesine rağmen, protokole Transport Layer Security (TLS) adı verilir. Bu protokol, asimetrik ortak anahtar altyapısı olarak bilinen şeyi kullanarak iletişimi güvence altına alır. Bu tür güvenlik sistemi, iki taraf arasındaki iletişimi şifrelemek için iki farklı anahtar kullanır:</p>
+      <p>HTTPS, iletişimları şifrelemek için bir şifreleme protokolü kullanır. Önceden Secure Sockets Layer (SSL) olarak bilinmesine rağmen, protokole Transport Layer Security (TLS) adı verilir. Bu protokol, asimetrik ortak anahtar altyapısı olarak bilinen şeyi kullanarak iletişimi güvence altına alır. Bu tür güvenlik sistemi, iki taraf arasındaki iletişimi şifrelemek için iki farklı anahtar kullanır:</p>
       <ul>
         <li><strong>Private Key</strong> — Bu key, bir web sitesinin sahibi tarafından kontrol edilir ve okuyucunun tahmin ettiği gibi gizli tutulur. Bu key bir web sunucusunda bulunur ve public key tarafından şifrelenen bilgilerin şifresini çözmek için kullanılır.</li>
         <li><strong>Public key</strong> — Bu key, sunucuyla güvenli bir şekilde etkileşim kurmak isteyen herkes tarafından kullanılabilir. Public key tarafından şifrelenen bilgilerin şifresi yalnızca private key tarafından çözülebilir.</li>
@@ -181,7 +181,7 @@ const blogPosts = [
         <li>Github gibi çok popüler bir yazılım mecrası tarafından kullanılması</li>
       </ul>
       <p>Git’i popüler yapan şeyler bunlar. Sende git kullanmayı öğrenmek istiyorsan hadi başlayalım.</p>
-      <img video-src="images/blog/2/2.gif" poster-src="images/blog/2/video-poster.png"></img>
+      <img video-src="images/blog/2/2.mp4" poster-src="images/blog/2/video-poster.png"></img>
       <small>wait wait wait</small>
       <p>Başlamadan önce şu yapıyı öğrenirsek çok fazla işimize yarayacağına inanıyorum.</p>
       <img src="images/blog/2/3.png" alt="Git Yapısı" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
@@ -189,7 +189,7 @@ const blogPosts = [
       <p><strong>staging area</strong> ya ise .git directory sine atmadan önce değişikliklerimizi beklettiğimiz alan olarak düşünebiliriz.</p>
       <p><strong>.git directory</strong> ise emin olduğumuz değişiklikleri içine atadığımız(commit) klasör diyebiliriz. daha sonra buradaki dosyalarımızı remote repolara atacağız tabi her şey burada bitmedi.</p>
       <p>Dediğimiz gibi git bir versiyon kontrol sistemi, hangi değişikliği kim yaptı bunu takip etmek için git in config ayarlarını yapmamız gerekiyor.</p>
-      <img video-src="images/blog/2/4.gif" poster-src="images/blog/2/video-poster.png"></img>
+      <img video-src="images/blog/2/4.mp4" poster-src="images/blog/2/video-poster.png"></img>
       <small>command line ımızı açıyoruz.</small>
       Öncelikle git bilgisayarlarınızda yüklü değilse bu linkten download edip kurmanız gerekiyor.</p>
       <h4>git config</h4>
@@ -381,10 +381,12 @@ const blogPosts = [
     mediumUrl: "",
     content: `
       <h2>Tmdb API sini kullanmak</h2>
+      <img src="images/blog/3/1.png" alt="TMDB API" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
       <p><strong>Yusuf Yılmaz</strong></p>
       <p>4 min read · Apr 5, 2022</p>
       <p>Merhaba, bu yazıda sizlere birlikte api kullanarak popüler filmleri listeleyen bir web sayfası tasarlayacağız.<br>
       Öncelikle kısaca API nedir ona bakalım.</p>
+      <img src="images/blog/3/2.png" alt="TMDB API" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
       <h3>API Nedir?</h3>
       <p>API iki uygulamanın birbiri ile veri alışverişi yapmasını, konuşmasını sağlar. Bir uygulamanın işlevselliğini başka uygulamalar tarafından kullanılmasını sağlar.<br>
       Telefonumuzdaki hava durumu uygulaması gibi. Hava durumu uygulaması bu bilgileri sağlayan uygulamanın server ile iletişime geçer ve bilgileri uygulama içinde gösterir.İşte bu olaya API deriz
@@ -397,6 +399,7 @@ const blogPosts = [
       <h3>TMDB API den key alma</h3>
       <p>Tmdb APIsini kullanmak için öncelikle şu linkten üye olmamız gerekir.<br>
       Daha sonra Ayarlar&gt;API ye tıklayarak key talebinde bulunalım ve sonra karşımıza developer olarak mı profesyonel olarak mı ihtiyaç duyuyoruz diye iki seçenek çıkacak. developer ı seçip şartları kabul edelim. En son olarak bizden nerede? niçin? kullanacağız gibi bilgiler isteyecek gerekli bilgileri dolduralım ve</p>
+      <img video-src="images/blog/3/3.mp4" poster-src="images/blog/3/video-poster.png"></img>
       <p>artık key e sahibiz. Tmdb nin bize sağladığı bilgilerden istediklerimizi kullanarak uygulamamızı geliştirebiliriz. Buradaki linkten
       hangi verilere nasıl ulaşacağımızı görebiliriz.</p>
       <h3>Şimdi tasarım</h3>
@@ -433,7 +436,7 @@ const URL = \`https://api.themoviedb.org/3/movie/popular?api_key=\${APIKEY}&lang
 //film posterlerini gösterebilmek için gereken diğer url
 const IMGPATH = \`https://image.tmdb.org/t/p/w1280/\`;</code></pre>
       <p>Html taglerini pageleme kodlarını ekleyelim</p>
-      <pre><code>//maniupule edeceğimiz html elementleri
+      <pre><code>// maniupule edeceğimiz html elementleri
 const images = document.querySelector(".images");
 const nextBtn = document.getElementById("next");
 const previousBtn = document.getElementById("previous");
@@ -492,7 +495,9 @@ images.appendChild(box);
 };</code></pre>
       <p>Önce getPopMovies() den aldığımız data parameterinin results propertyisinin null olup olmadığını kontrol ediyoruz. data.results ın içindeki verilere erişmek için foreach yapısının kullanıyoruz. verileri daha rahat erişmek için ise Object destructuring kullanarak filmin afişi,ismine,puanına ve vizyon tarihine erişiyoruz. Bu verileri create ettiğimiz divin içine innerHTML i kullanarak ekliyoruz. Önceden bahsettiğimiz imagesin içine bu html kodlarını eklemek için images.appendChild(box) diyerek verileri sayfaya ekliyoruz. Şimdi kodumuzu biraz css ile güzelleştirip son haline getirelim</p>
       <p>Sugar, spice and evreything nice</p>
+      <img video-src="images/blog/3/4.mp4" poster-src="images/blog/3/video-poster.png"></img>
       <p>İşte sitemizin son hali</p>
+      <img video-src="images/blog/3/5.mp4" poster-src="images/blog/3/video-poster.png"></img>
       <p>Search özelliği genre filtreme vb özellikler ekleyerek daha efektif hale getirmek size kalmış:) Bu yazıda bana eşlik ettiğiniz için teşekkür eder ve iyi günler dilerim.</p>
       <div class="blog-sources">
         <h4>Kaynakça</h4>
@@ -587,6 +592,19 @@ function renderBlogDetail() {
     return;
   }
 
+  // --- GIF img'lerini video'ya çevir ---
+  let content = post.content.replace(
+    /<img\s+video-src="([^"]+)"\s+poster-src="([^"]+)"\s*><\/img>/g,
+    (match, videoSrc, posterSrc) => `
+      <div class="blog-gif-wrapper" style="display: flex; justify-content: center; margin: 24px 0;">
+        <video controls loop autoplay muted playsinline poster="${posterSrc}" style="max-width:100%;border-radius:8px;background:#f4f4f4;">
+          <source src="${videoSrc}" type="video/mp4">
+          GIF/video desteklenmiyor.
+        </video>
+      </div>
+    `
+  );
+
   const html = `
     <a href="blog.html" class="back-button">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -603,11 +621,20 @@ function renderBlogDetail() {
       </div>
     </header>
     <div class="blog-detail-content">
-      ${post.content}
+      ${content}
     </div>
   `;
 
   container.innerHTML = html;
+
+  // --- <small> etiketlerini ortala ---
+  container.querySelectorAll('.blog-detail-content small').forEach(el => {
+    el.style.display = 'block';
+    el.style.textAlign = 'center';
+    el.style.margin = '16px 0 8px 0';
+    el.style.fontSize = '0.95em';
+    el.style.color = '#888';
+  });
 }
 
 // Format date to Turkish locale

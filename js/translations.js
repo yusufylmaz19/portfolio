@@ -51,6 +51,10 @@ const translations = {
                 email: "📧 E-posta",
                 phone: "📱 Telefon"
             },
+            github: {
+                tag: "GitHub",
+                title: "Kodlama Aktivitem"
+            },
             skills: {
                 tag: "Yetenekler",
                 title: "Kullandığım Teknolojiler"
@@ -172,6 +176,10 @@ const translations = {
                 location_val: "Istanbul, Turkey",
                 email: "📧 Email",
                 phone: "📱 Phone"
+            },
+            github: {
+                tag: "GitHub",
+                title: "Coding Activity"
             },
             skills: {
                 tag: "Skills",

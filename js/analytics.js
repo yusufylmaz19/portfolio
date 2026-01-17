@@ -6,7 +6,7 @@
     const gaId = "G-E1HC47YG6F"
     const script = document.createElement('script');
     script.async = true;
-    const newLocal = `script.src = https;://www.googletagmanager.com/gtag/js?${gaId}`
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
     document.head.appendChild(script);
 
     // Initialize dataLayer

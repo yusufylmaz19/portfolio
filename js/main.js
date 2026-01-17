@@ -76,57 +76,117 @@ function initSmoothScroll() {
     });
 }
 
-// Contact Form Validation
+// Contact Form Validation and EmailJS Integration
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Import email config
+    import('./email-config.js')
+        .then(module => {
+            const EMAIL_CONFIG = module.default;
 
-        let isValid = true;
-        const formGroups = form.querySelectorAll('.form-group');
+            // Initialize EmailJS
+            emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
 
-        // Reset errors
-        formGroups.forEach(group => group.classList.remove('error'));
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
 
-        // Validate name
-        const nameInput = form.querySelector('#name');
-        if (nameInput && nameInput.value.trim().length < 2) {
-            nameInput.closest('.form-group').classList.add('error');
-            isValid = false;
-        }
+                let isValid = true;
+                const formGroups = form.querySelectorAll('.form-group');
 
-        // Validate email
-        const emailInput = form.querySelector('#email');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailInput && !emailRegex.test(emailInput.value.trim())) {
-            emailInput.closest('.form-group').classList.add('error');
-            isValid = false;
-        }
+                // Reset errors
+                formGroups.forEach(group => group.classList.remove('error'));
 
-        // Validate message
-        const messageInput = form.querySelector('#message');
-        if (messageInput && messageInput.value.trim().length < 10) {
-            messageInput.closest('.form-group').classList.add('error');
-            isValid = false;
-        }
+                // Validate name
+                const nameInput = form.querySelector('#name');
+                if (nameInput && nameInput.value.trim().length < 2) {
+                    nameInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
 
-        if (isValid) {
-            // Fake submit - log to console
-            console.log('Form submitted:', {
-                name: nameInput.value,
-                email: emailInput.value,
-                message: messageInput.value
+                // Validate email
+                const emailInput = form.querySelector('#email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+                    emailInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate subject
+                const subjectInput = form.querySelector('#subject');
+                if (subjectInput && subjectInput.value.trim().length < 2) {
+                    subjectInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+
+                // Validate message
+                const messageInput = form.querySelector('#message');
+                if (messageInput && messageInput.value.trim().length < 10) {
+                    messageInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    showNotification('Lütfen tüm alanları doğru doldurun.', 'error');
+                    return;
+                }
+
+                // Get submit button and add loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Gönderiliyor...</span>';
+
+                try {
+                    // Send email via EmailJS
+                    const templateParams = {
+                        from_name: nameInput.value.trim(),
+                        from_email: emailInput.value.trim(),
+                        subject: subjectInput.value.trim(),
+                        message: messageInput.value.trim()
+                    };
+
+                    const response = await emailjs.send(
+                        EMAIL_CONFIG.SERVICE_ID,
+                        EMAIL_CONFIG.TEMPLATE_ID,
+                        templateParams
+                    );
+
+                    console.log('Email sent successfully:', response);
+
+                    // Show success message
+                    showNotification('Mesajınız başarıyla gönderildi! 🎉', 'success');
+                    form.reset();
+
+                } catch (error) {
+                    console.error('Email send failed:', error);
+
+                    // Check if it's a config error
+                    if (error.text && error.text.includes('not found')) {
+                        showNotification('⚠️ Email servisi yapılandırılmamış. Lütfen email-config.js dosyasını kontrol edin.', 'error');
+                    } else {
+                        showNotification('Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.', 'error');
+                    }
+                } finally {
+                    // Restore button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
             });
+        })
+        .catch(error => {
+            console.error('Email config import failed:', error);
+            console.warn('EmailJS not configured. Form will log to console only.');
 
-            // Show success message
-            showNotification('Mesajınız başarıyla gönderildi! 🎉', 'success');
-            form.reset();
-        } else {
-            showNotification('Lütfen tüm alanları doğru doldurun.', 'error');
-        }
-    });
+            // Fallback: simple console logging if config not available
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                console.log('Form data (EmailJS not configured):', Object.fromEntries(formData));
+                showNotification('⚠️ Email servisi aktif değil. Konsolu kontrol edin.', 'error');
+            });
+        });
 }
 
 // Notification system

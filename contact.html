@@ -16,12 +16,6 @@
       rel="stylesheet"
     />
 
-    <!-- EmailJS SDK -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -190,115 +184,23 @@
           </div>
 
           <!-- Contact Form -->
+          <!-- Contact Message -->
           <div class="fade-in-right">
-            <form id="contact-form" class="card">
-              <h3 class="mb-md" data-i18n="contact_page.form.title">
-                Mesaj Gönderin
+            <div class="card">
+              <h3 class="mb-md" data-i18n="contact_page.message.title">
+                İletişime Geçin
               </h3>
+              <p class="mb-lg" data-i18n="contact_page.message.description">
+                Proje teklifleriniz veya sorularınız için benimle doğrudan email
+                üzerinden iletişime geçebilirsiniz. Size en kısa sürede geri
+                dönüş yapacağım.
+              </p>
 
-              <div class="form-group">
-                <label
-                  for="name"
-                  class="form-label"
-                  data-i18n="contact_page.form.name_label"
-                  >Adınız</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="from_name"
-                  class="form-input"
-                  placeholder="Adınızı girin"
-                  data-i18n="contact_page.form.name_placeholder"
-                  required
-                />
-                <span
-                  class="form-error"
-                  data-i18n="contact_page.form.name_error"
-                  >Lütfen geçerli bir isim girin (min. 2 karakter)</span
-                >
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="email"
-                  class="form-label"
-                  data-i18n="contact_page.form.email_label"
-                  >E-posta</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="from_email"
-                  class="form-input"
-                  placeholder="E-posta adresinizi girin"
-                  data-i18n="contact_page.form.email_placeholder"
-                  required
-                />
-                <span
-                  class="form-error"
-                  data-i18n="contact_page.form.email_error"
-                  >Lütfen geçerli bir e-posta adresi girin</span
-                >
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="subject"
-                  class="form-label"
-                  data-i18n="contact_page.form.subject_label"
-                  >Konu</label
-                >
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="form-input"
-                  placeholder="Mesajınızın konusu"
-                  data-i18n="contact_page.form.subject_placeholder"
-                  required
-                />
-                <span
-                  class="form-error"
-                  data-i18n="contact_page.form.subject_error"
-                  >Lütfen bir konu girin</span
-                >
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="message"
-                  class="form-label"
-                  data-i18n="contact_page.form.message_label"
-                  >Mesajınız</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-textarea"
-                  placeholder="Mesajınızı yazın..."
-                  data-i18n="contact_page.form.message_placeholder"
-                  required
-                ></textarea>
-                <span
-                  class="form-error"
-                  data-i18n="contact_page.form.message_error"
-                  >Lütfen mesajınızı girin (min. 10 karakter)</span
-                >
-              </div>
-
-              <button
-                type="submit"
+              <a
+                href="mailto:yusufyilmaz1905@hotmail.com"
                 class="btn btn-primary"
-                style="
-                  width: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 8px;
-                "
+                style="display: inline-flex; align-items: center; gap: 8px"
               >
-                <span data-i18n="contact_page.form.btn_send">Gönder</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -311,11 +213,12 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-              </button>
-            </form>
+                <span data-i18n="contact_page.message.btn">Email Gönder</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

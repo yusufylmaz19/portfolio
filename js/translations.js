@@ -96,21 +96,10 @@ const translations = {
                 title: "İletişim Bilgileri",
                 social_title: "Sosyal Medya"
             },
-            form: {
-                title: "Mesaj Gönderin",
-                name_label: "Adınız",
-                name_placeholder: "Adınızı girin",
-                name_error: "Lütfen geçerli bir isim girin (min. 2 karakter)",
-                email_label: "E-posta",
-                email_placeholder: "E-posta adresinizi girin",
-                email_error: "Lütfen geçerli bir e-posta adresi girin",
-                subject_label: "Konu",
-                subject_placeholder: "Mesajınızın konusu",
-                subject_error: "Lütfen bir konu girin",
-                message_label: "Mesajınız",
-                message_placeholder: "Mesajınızı yazın...",
-                message_error: "Lütfen mesajınızı girin (min. 10 karakter)",
-                btn_send: "Gönder"
+            message: {
+                title: "İletişime Geçin",
+                description: "Proje teklifleriniz veya sorularınız için benimle doğrudan email üzerinden iletişime geçebilirsiniz. Size en kısa sürede geri dönüş yapacağım.",
+                btn: "Email Gönder"
             }
         },
         blog_page: {
@@ -228,21 +217,10 @@ const translations = {
                 title: "Contact Information",
                 social_title: "Social Media"
             },
-            form: {
-                title: "Send a Message",
-                name_label: "Your Name",
-                name_placeholder: "Enter your name",
-                name_error: "Please enter a valid name (min. 2 characters)",
-                email_label: "Email",
-                email_placeholder: "Enter your email address",
-                email_error: "Please enter a valid email address",
-                subject_label: "Subject",
-                subject_placeholder: "Message subject",
-                subject_error: "Please enter a subject",
-                message_label: "Your Message",
-                message_placeholder: "Write your message...",
-                message_error: "Please enter your message (min. 10 characters)",
-                btn_send: "Send"
+            message: {
+                title: "Get in Touch",
+                description: "Feel free to reach out to me directly via email for project proposals or questions. I'll get back to you as soon as possible.",
+                btn: "Send Email"
             }
         },
         blog_page: {

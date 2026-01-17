@@ -321,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setActiveNavLink();
     initScrollAnimations();
     initSmoothScroll();
-    initContactForm();
     initNavbarScroll();
     initCursorEffect();
     initTypingEffect();

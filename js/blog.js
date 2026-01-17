@@ -2,12 +2,19 @@
 const blogPosts = [
   {
     id: 1,
-    title: "HTTP, HTTPS, SSL/TLS, SSH",
-    excerpt: "HTTP, HTTPS, SSL/TLS, SSH protokolleri ve webin temelleri hakkında detaylı, eksiksiz bir rehber.",
+    title: {
+      tr: "HTTP, HTTPS, SSL/TLS, SSH",
+      en: "HTTP, HTTPS, SSL/TLS, SSH"
+    },
+    excerpt: {
+      tr: "HTTP, HTTPS, SSL/TLS, SSH protokolleri ve webin temelleri hakkında detaylı, eksiksiz bir rehber.",
+      en: "A detailed, comprehensive guide about HTTP, HTTPS, SSL/TLS, SSH protocols and web fundamentals."
+    },
     date: "2022-07-28",
     readTime: "11 dk",
     mediumUrl: "",
-    content: `
+    content: {
+      tr: `
       <h2>HTTP, HTTPS, SSL/TLS,SSH</h2>
       <h3>Web ve HTTP</h3>
       <p>1990'ların başına kadar İnternet öncelikle araştırmacılar, akademisyenler ve üniversite öğrencileri tarafından kullanılıyordu. uzak ana bilgisayarlarda oturum açmak, yerel ana bilgisayarlardan uzak ana bilgisayarlara dosya aktarmak ve bunun tam tersi için, haber göndermek ve almak, elektronik posta almak ve göndermek için kullanılıyordu.Ta ki WWW (Wordl Wide Web) sahneye çıkana kadar. Web, halkın dikkatini çeken ilk İnternet uygulamasıydı. İnsanların çalışma ortamlarının içinde ve dışında nasıl etkileşime girdiğini önemli ölçüde değiştirdi ve değiştirmeye devam ediyor. Belki de kullanıcılara en çok hitap eden şey, Web’in talep üzerine çalışmasıdır. Kullanıcılar istedikleri zaman istedikleri şeyleri alırlar.bu Tv ve Radyo yayınlarının tam tersidir.Web herkesi bir yayıncı hale getirdi.Arama motorları web okyanusunda gezinmemizi sağladı. Formlar, JavaScript, Java uygulamaları ve diğer birçok cihaz sayfalar ve sitelerle etkileşim kurmamızı sağlar. Ve Web protokolleri, YouTube, Web tabanlı e-posta (Gmail gibi) ve çoğu mobil İnternet uygulaması, Instagram ve Google Haritalar için bir platform görevi görür.</p>
@@ -156,16 +163,51 @@ const blogPosts = [
         <span class="blog-tag">SSL</span>
         <span class="blog-tag">TLS</span>
       </div>
+    `,
+      en: `
+      <h2>HTTP, HTTPS, SSL/TLS, SSH</h2>
+      <h3>Web and HTTP</h3>
+      <p>Until the early 1990s, the Internet was primarily used by researchers, academics, and university students for logging into remote hosts, transferring files, sending and receiving news, and email. That was until the WWW (World Wide Web) emerged. The Web was the first Internet application to capture public attention, significantly changing how people interact. The Web works on demand - users get what they want when they want it. The Web made everyone a publisher. Search engines help us navigate the web ocean, and Web protocols serve as a platform for YouTube, Gmail, Instagram, and Google Maps.</p>
+      <h3>HTTP Overview</h3>
+      <p>Hypertext Transfer Protocol (HTTP) works on port 80 at the application layer. HTTP is the heart of the web, implemented in client and server programs that exchange HTTP messages.</p>
+      <p><em>Note: Full technical content available in Turkish. Complete English translation coming soon.</em></p>
+      <div class="blog-sources">
+        <h4>Book</h4>
+        <ul>
+          <li>Computer Networking: A Top-Down Approach (7th Edition) — Kurose & Ross</li>
+        </ul>
+        <h4>Web Resources</h4>
+        <ul>
+          <li><a href="https://www.cloudflare.com/learning/ssl/what-is-https/" target="_blank">Cloudflare - What is HTTPS?</a></li>
+          <li><a href="https://www.cloudflare.com/learning/ssl/what-is-ssl/" target="_blank">Cloudflare - What is SSL?</a></li>
+          <li><a href="https://www.techtarget.com/searchsecurity/definition/Secure-Shell" target="_blank">TechTarget - Secure Shell</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">HTTPS</span>
+        <span class="blog-tag">HTTP Request</span>
+        <span class="blog-tag">SSH</span>
+        <span class="blog-tag">SSL</span>
+        <span class="blog-tag">TLS</span>
+      </div>
     `
+    },
   },
   {
     id: 2,
-    title: "Git",
-    excerpt: "Git ve versiyon kontrol sistemleri hakkında detaylı, eksiksiz bir rehber.",
+    title: {
+      tr: "Git",
+      en: "Git"
+    },
+    excerpt: {
+      tr: "Git ve versiyon kontrol sistemleri hakkında detaylı, eksiksiz bir rehber.",
+      en: "A detailed, comprehensive guide about Git and version control systems."
+    },
     date: "2022-07-25",
     readTime: "9 dk",
     mediumUrl: "",
-    content: `
+    content: {
+      tr: `
       <h2>Git</h2>
       <p><strong>Yusuf Yılmaz</strong></p>
       <p>9 min read · Jul 25, 2022</p>
@@ -370,16 +412,50 @@ const blogPosts = [
         <span class="blog-tag">GitLab</span>
         <span class="blog-tag">Version Control</span>
       </div>
+    `,
+      en: `
+      <h2>Git</h2>
+      <h3>What is Git?</h3>
+      <p>Git is a version control system designed and used by Linus Torvalds to develop the Linux kernel. Version control systems are software tools that help software teams manage changes they make over time - versioning projects and navigating between versions.</p>
+      <p><strong>What makes Git so popular?</strong></p>
+      <ul>
+        <li>Fast performance</li>
+        <li>Support for hundreds of different development branches</li>
+        <li>Works smoothly on large-scale projects</li>
+        <li>Used by very popular platforms like GitHub</li>
+      </ul>
+      <p><em>Note: Full technical content available in Turkish. Complete English translation coming soon.</em></p>
+      <div class="blog-sources">
+        <h4>References</h4>
+        <ul>
+          <li><a href="https://www.btkakademi.gov.tr" target="_blank">BTK Academy - Version Control: Git and GitHub</a></li>
+          <li><a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git Book (git-scm.com)</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">Git</span>
+        <span class="blog-tag">GitHub</span>
+        <span class="blog-tag">GitLab</span>
+        <span class="blog-tag">Version Control</span>
+      </div>
     `
+    }
   },
   {
     id: 3,
-    title: "TMDB API'sini kullanmak",
-    excerpt: "TMDB API ile popüler filmleri listeleyen bir web sayfası oluşturma rehberi.",
+    title: {
+      tr: "TMDB API'sini kullanmak",
+      en: "Using the TMDB API"
+    },
+    excerpt: {
+      tr: "TMDB API ile popüler filmleri listeleyen bir web sayfası oluşturma rehberi.",
+      en: "A guide to creating a web page that lists popular movies using the TMDB API."
+    },
     date: "2022-04-05",
     readTime: "4 dk",
     mediumUrl: "",
-    content: `
+    content: {
+      tr: `
       <h2>Tmdb API sini kullanmak</h2>
       <img src="images/blog/3/1.png" alt="TMDB API" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px; background-color: #f4f4f4; padding: 10px;">
       <p><strong>Yusuf Yılmaz</strong></p>
@@ -514,7 +590,31 @@ images.appendChild(box);
         <span class="blog-tag">Movies</span>
         <span class="blog-tag">Fetch</span>
       </div>
+    `,
+      en: `
+      <h2>Using the TMDB API</h2>
+      <h3>What is an API?</h3>
+      <p>An API allows two applications to exchange data and communicate with each other. It enables one application's functionality to be used by other applications.</p>
+      <h3>Which API will we use?</h3>
+      <p>In this article, we'll use a movie API. We'll be using the TMDB API which requires an API key.</p>
+      <p><em>Note: Full technical tutorial available in Turkish. Complete English translation coming soon.</em></p>
+      <div class="blog-sources">
+        <h4>References</h4>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a></li>
+          <li><a href="https://www.themoviedb.org/documentation/api" target="_blank">TMDB API Documentation</a></li>
+        </ul>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">JavaScript</span>
+        <span class="blog-tag">JSON</span>
+        <span class="blog-tag">API</span>
+        <span class="blog-tag">TMDB</span>
+        <span class="blog-tag">Movies</span>
+        <span class="blog-tag">Fetch</span>
+      </div>
     `
+    }
   },
 ];
 
@@ -530,13 +630,13 @@ function renderBlogCards() {
 
   const html = blogPosts.map(post => `
     <article class="card fade-in">
-      <h3 class="card-title">${post.title}</h3>
+      <h3 class="card-title">${post.title[currentLang]}</h3>
       <div class="card-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
         <span>${post.readTime} ${readTimeSuffix}</span>
       </div>
-      <p class="card-description">${post.excerpt}</p>
+      <p class="card-description">${post.excerpt[currentLang]}</p>
       <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
         ${readMoreText}
       </a>
@@ -564,13 +664,13 @@ function renderFeaturedBlogs() {
 
   const html = featured.map(post => `
     <article class="card">
-      <h3 class="card-title">${post.title}</h3>
+      <h3 class="card-title">${post.title[currentLang]}</h3>
       <div class="card-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
         <span>${post.readTime} ${readTimeSuffix}</span>
       </div>
-      <p class="card-description">${post.excerpt}</p>
+      <p class="card-description">${post.excerpt[currentLang]}</p>
       <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
         ${readMoreText}
       </a>
@@ -599,17 +699,17 @@ function renderBlogDetail() {
 
   if (!post) {
     container.innerHTML = `
-      <div class="text-center">
+  < div class="text-center" >
         <h2>${notFoundTitle}</h2>
         <p class="mt-md">${notFoundDesc}</p>
         <a href="blog.html" class="btn btn-primary mt-lg">${backBtnText}</a>
-      </div>
-    `;
+      </div >
+  `;
     return;
   }
 
   // --- GIF img'lerini video'ya çevir ---
-  let content = post.content.replace(
+  let content = post.content[currentLang].replace(
     /<img\s+video-src="([^"]+)"\s+poster-src="([^"]+)"\s*><\/img>/g,
     (match, videoSrc, posterSrc) => `
       <div class="blog-gif-wrapper" style="display: flex; justify-content: center; margin: 24px 0;">
@@ -629,7 +729,7 @@ function renderBlogDetail() {
       ${backBtnText}
     </a>
     <header class="blog-detail-header">
-      <h1>${post.title}</h1>
+      <h1>${post.title[currentLang]}</h1>
       <div class="blog-detail-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
@@ -639,7 +739,7 @@ function renderBlogDetail() {
     <div class="blog-detail-content">
       ${content}
     </div>
-  `;
+`;
 
   container.innerHTML = html;
 

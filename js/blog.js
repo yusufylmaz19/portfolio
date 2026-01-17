@@ -194,16 +194,16 @@ const cssArtworks = [
     title: 'PowerPuff Girls Bubbles',
     tag: 'Pure CSS Art'
   },
-  {
-    id: 'GRxzoKO',
-    title: 'John Lennon',
-    tag: 'Pure CSS Art'
-  },
-  {
-    id: 'BarKWRB',
-    title: 'The Office Logo',
-    tag: 'Pure CSS Art'
-  }
+  // {
+  //   id: 'GRxzoKO',
+  //   title: 'John Lennon',
+  //   tag: 'Pure CSS Art'
+  // },
+  // {
+  //   id: 'BarKWRB',
+  //   title: 'The Office Logo',
+  //   tag: 'Pure CSS Art'
+  // }
 ];
 
 // Render gallery on index.html

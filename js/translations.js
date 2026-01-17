@@ -80,9 +80,6 @@ const translations = {
             projects: {
                 tag: "Projeler",
                 title: "Öne Çıkan Projeler",
-                movie_desc: "TMDb API kullanılarak geliştirilen film inceleme uygulaması",
-                css_desc: "Pure HTML & CSS ile karakter çizimleri ve animasyonlar",
-                leetcode_desc: "JavaScript ile algoritma ve veri yapıları çözümleri"
             }
         },
         contact_page: {

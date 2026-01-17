@@ -65,6 +65,12 @@ const translations = {
                 privia_intern_title: "Frontend Intern",
                 privia_intern_desc: "<li>React.js temelleri</li><li>SCSS ile modüler stiller</li><li>Git ve ekip içi geliştirme süreçleri</li><li>Bug fix ve küçük iyileştirmeler</li>"
             },
+            volunteer: {
+                tag: "Gönüllülük",
+                title: "Gönüllü Çalışmalarım",
+                sisterslab_title: "Frontend Academy | Yardımcı Eğitmen",
+                sisterslab_desc: "Sivil Toplum için Destek Vakfı ve Turkey Mozaik Foundation iş birliğiyle hayata geçirilen Yerel Güçlenmeye Destek Fonu kapsamında sağlanan hibe desteğiyle gerçekleştirilen \"Afetten Etkilenen Yazılımcı Gençlerin Güçlenmesi ve İstihdama Erişimi Projesi\" kapsamında, 6 Şubat 2023 tarihinde Kahramanmaraş'ta meydana gelen ve 11 ili etkileyen deprem sebebiyle zarar gören, mühendislik bölümlerinde eğitim gören 3. ve/veya 4. sınıf üniversite öğrencilerinin yazılım akademileri ile güçlenmelerine destek olup istihdama erişimini desteklemek amacıyla yardımcı eğitmen olarak görev aldım."
+            },
             education: {
                 tag: "Eğitim",
                 title: "Eğitim Geçmişim",
@@ -183,6 +189,12 @@ const translations = {
                 privia_desc: "<li>Tasked with redevelopment of PriviaHub platform</li><li>Modular architecture with React, Next.js, and TypeScript</li><li>Dashboard, analytics, and admin panels</li><li>State management with Redux & Redux Toolkit</li><li>Pixel-perfect implementation of UI/UX designs</li><li>Performance improvements</li>",
                 privia_intern_title: "Frontend Intern",
                 privia_intern_desc: "<li>React.js fundamentals</li><li>Modular styles with SCSS</li><li>Git and team development processes</li><li>Bug fixes and minor improvements</li>"
+            },
+            volunteer: {
+                tag: "Volunteering",
+                title: "Volunteer Work",
+                sisterslab_title: "Frontend Academy | Assistant Instructor",
+                sisterslab_desc: "As part of the \"Empowerment and Employment Access Project for Software Developers Affected by the Disaster\", implemented with grant support provided within the scope of the Local Empowerment Support Fund realized through the collaboration of the Support Foundation for Civil Society and Turkey Mozaik Foundation, I served as an assistant instructor to support 3rd and/or 4th year university students studying in engineering departments who were affected by the earthquake that occurred in Kahramanmaraş on February 6, 2023 and affected 11 provinces, to strengthen them through software academies and support their access to employment."
             },
             education: {
                 tag: "Education",

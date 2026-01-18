@@ -261,37 +261,202 @@ function initNavbarScroll() {
     });
 }
 
-// Cursor glow effect (subtle)
+// Enhanced Neon Cursor Effect
 function initCursorEffect() {
     // Only on desktop
     if (window.innerWidth < 1024) return;
 
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    cursor.style.cssText = `
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s;
-  `;
-    document.body.appendChild(cursor);
+    // Hide default cursor
+    document.body.style.cursor = 'none';
 
+    // Create cursor dot (center)
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'cursor-dot';
+    cursorDot.style.cssText = `
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: var(--neon-green);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+        box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+    `;
+    document.body.appendChild(cursorDot);
+
+    // Create cursor ring (outer)
+    const cursorRing = document.createElement('div');
+    cursorRing.className = 'cursor-ring';
+    cursorRing.style.cssText = `
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--neon-green);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.5), inset 0 0 20px rgba(0, 255, 136, 0.2);
+    `;
+    document.body.appendChild(cursorRing);
+
+    // Create primary glow layer
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    cursorGlow.style.cssText = `
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 30%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease;
+        animation: pulse 2s ease-in-out infinite;
+    `;
+    document.body.appendChild(cursorGlow);
+
+    // Create secondary glow layer (trailing effect)
+    const cursorGlow2 = document.createElement('div');
+    cursorGlow2.className = 'cursor-glow-2';
+    cursorGlow2.style.cssText = `
+        position: fixed;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(136, 0, 255, 0.08) 40%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9997;
+        transform: translate(-50%, -50%);
+        transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: pulse 3s ease-in-out infinite alternate;
+    `;
+    document.body.appendChild(cursorGlow2);
+
+    // Add pulse animation to document
+    const pulseStyle = document.createElement('style');
+    pulseStyle.textContent = `
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+        
+        @keyframes rotate-colors {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+    `;
+    document.head.appendChild(pulseStyle);
+
+    // Mouse position tracking
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let ringX = 0, ringY = 0;
+    let glow2X = 0, glow2Y = 0;
+
+    // Update mouse position
     document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
     });
 
+    // Smooth animation for cursor elements
+    function animateCursor() {
+        // Instant follow for dot
+        cursorX = mouseX;
+        cursorY = mouseY;
+
+        // Smooth follow for ring (slight delay)
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+
+        // More delayed follow for secondary glow (trail effect)
+        glow2X += (mouseX - glow2X) * 0.08;
+        glow2Y += (mouseY - glow2Y) * 0.08;
+
+        cursorDot.style.left = cursorX + 'px';
+        cursorDot.style.top = cursorY + 'px';
+
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+
+        cursorGlow.style.left = cursorX + 'px';
+        cursorGlow.style.top = cursorY + 'px';
+
+        cursorGlow2.style.left = glow2X + 'px';
+        cursorGlow2.style.top = glow2Y + 'px';
+
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Interactive hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .card, .skill-card, .project-card, input, textarea');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.style.width = '15px';
+            cursorDot.style.height = '15px';
+            cursorDot.style.background = 'rgba(0, 255, 255, 0.9)';
+            cursorDot.style.boxShadow = '0 0 15px cyan, 0 0 30px cyan, 0 0 45px cyan';
+
+            cursorRing.style.width = '60px';
+            cursorRing.style.height = '60px';
+            cursorRing.style.borderColor = 'cyan';
+            cursorRing.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(0, 255, 255, 0.3)';
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursorDot.style.width = '8px';
+            cursorDot.style.height = '8px';
+            cursorDot.style.background = 'var(--neon-green)';
+            cursorDot.style.boxShadow = '0 0 10px var(--neon-green), 0 0 20px var(--neon-green)';
+
+            cursorRing.style.width = '40px';
+            cursorRing.style.height = '40px';
+            cursorRing.style.borderColor = 'var(--neon-green)';
+            cursorRing.style.boxShadow = '0 0 20px rgba(0, 255, 136, 0.5), inset 0 0 20px rgba(0, 255, 136, 0.2)';
+        });
+    });
+
+    // Hide cursor when leaving window
     document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
+        cursorDot.style.opacity = '0';
+        cursorRing.style.opacity = '0';
+        cursorGlow.style.opacity = '0';
+        cursorGlow2.style.opacity = '0';
     });
 
     document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '1';
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+        cursorGlow.style.opacity = '1';
+        cursorGlow2.style.opacity = '1';
+    });
+
+    // Click effect
+    document.addEventListener('mousedown', () => {
+        cursorDot.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        cursorRing.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
     });
 }
 

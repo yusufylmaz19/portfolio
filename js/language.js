@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Check localStorage for saved language, default to 'tr'
-    let currentLang = localStorage.getItem('language') || 'tr';
+    // Check localStorage for saved language, default to 'en'
+    let currentLang = localStorage.getItem('language') || 'en';
 
     // Initial content update
     updateLanguage(currentLang);
@@ -94,4 +94,4 @@ function getTranslation(key, lang) {
 
 // Expose helpers globally so blog.js can use them
 window.getTranslation = getTranslation;
-window.getCurrentLanguage = () => localStorage.getItem('language') || 'tr';
+window.getCurrentLanguage = () => localStorage.getItem('language') || 'en';

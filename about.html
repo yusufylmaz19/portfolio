@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,10 @@
     />
 
     <!-- GitHub Calendar -->
-    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+    />
     <link rel="stylesheet" href="css/github-calendar-custom.css" />
 
     <!-- Styles -->
@@ -150,20 +153,25 @@
     <section class="section" style="background: var(--color-bg-secondary)">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag" data-i18n="about_page.github.tag">GitHub</span>
-          <h2 class="section-title" data-i18n="about_page.github.title">Coding Activity</h2>
+          <span class="section-tag" data-i18n="about_page.github.tag"
+            >GitHub</span
+          >
+          <h2 class="section-title" data-i18n="about_page.github.title">
+            Coding Activity
+          </h2>
         </div>
         <div class="github-stats-container">
           <!-- GitHub Contribution Graph -->
           <div class="github-calendar-container">
-            <div class="calendar">
-              Loading GitHub contribution graph...
-            </div>
+            <div class="calendar">Loading GitHub contribution graph...</div>
           </div>
 
           <!-- GitHub Contribution Streak -->
           <div class="github-contribution-section">
-            <img src="https://github-readme-streak-stats.herokuapp.com?user=yusufylmaz19&theme=dark&hide_border=false&border_radius=8&background=0D1117&ring=00FF88&fire=00FF88&currStreakLabel=00FF88&sideNums=FFFFFF&currStreakNum=00FF88&dates=8B949E&sideLabels=8B949E&stroke=30363D" alt="GitHub Streak Stats" />
+            <img
+              src="https://github-readme-streak-stats.herokuapp.com?user=yusufylmaz19&theme=dark&hide_border=false&border_radius=8&background=0D1117&ring=00FF88&fire=00FF88&currStreakLabel=00FF88&sideNums=FFFFFF&currStreakNum=00FF88&dates=8B949E&sideLabels=8B949E&stroke=30363D"
+              alt="GitHub Streak Stats"
+            />
           </div>
         </div>
       </div>
@@ -615,11 +623,11 @@
     <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
     <script>
       // Initialize GitHub Calendar after page loads
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         GitHubCalendar(".calendar", "yusufylmaz19", {
           responsive: true,
           tooltips: true,
-          global_stats: false
+          global_stats: false,
         });
       });
     </script>

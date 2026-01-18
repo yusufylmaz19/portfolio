@@ -283,6 +283,7 @@ function initCursorEffect() {
         transform: translate(-50%, -50%);
         transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
         box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        opacity: 0;
     `;
     document.body.appendChild(cursorDot);
 
@@ -300,6 +301,7 @@ function initCursorEffect() {
         transform: translate(-50%, -50%);
         transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
         box-shadow: 0 0 20px rgba(0, 255, 136, 0.5), inset 0 0 20px rgba(0, 255, 136, 0.2);
+        opacity: 0;
     `;
     document.body.appendChild(cursorRing);
 
@@ -317,6 +319,7 @@ function initCursorEffect() {
         transform: translate(-50%, -50%);
         transition: opacity 0.3s ease;
         animation: pulse 2s ease-in-out infinite;
+        opacity: 0;
     `;
     document.body.appendChild(cursorGlow);
 
@@ -334,6 +337,7 @@ function initCursorEffect() {
         transform: translate(-50%, -50%);
         transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         animation: pulse 3s ease-in-out infinite alternate;
+        opacity: 0;
     `;
     document.body.appendChild(cursorGlow2);
 
@@ -367,11 +371,21 @@ function initCursorEffect() {
     let cursorX = 0, cursorY = 0;
     let ringX = 0, ringY = 0;
     let glow2X = 0, glow2Y = 0;
+    let isFirstMove = true;
 
     // Update mouse position
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+
+        // Show cursor on first mouse movement
+        if (isFirstMove) {
+            cursorDot.style.opacity = '1';
+            cursorRing.style.opacity = '1';
+            cursorGlow.style.opacity = '1';
+            cursorGlow2.style.opacity = '1';
+            isFirstMove = false;
+        }
     });
 
     // Smooth animation for cursor elements

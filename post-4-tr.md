@@ -51,7 +51,7 @@ Web App'in ACR üzerindeki Docker imajını çekebilmesi için Managed Identity 
 
 ### 4. GitHub Secrets Yapılandırması ve Veri Toplama
 
-![Git](images/blog/4/git.png)
+![Git](images/blog/4/git.webp)
 
 Otomasyonun sorunsuz çalışması için Azure üzerindeki kimlik ve kaynak bilgilerini GitHub deponuza güvenli bir şekilde tanımlamanız gerekir. Aşağıdaki tablo, hangi bilginin nereden alınacağını ve GitHub tarafında hangi anahtarla saklanacağını özetlemektedir.
 

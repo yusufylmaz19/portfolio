@@ -90,8 +90,33 @@ function renderBlogDetail() {
     return;
   }
 
-  // --- GIF img'lerini video'ya çevir ---
-  let content = post.content[currentLang].replace(
+  // --- Markdown to HTML (marked.js) ---
+  let rawContent = post.content[currentLang];
+
+  // Parse markdown to HTML using marked.js
+  let content;
+  if (window.marked) {
+    content = window.marked.parse(rawContent);
+  } else {
+    // Fallback: render as-is (for legacy HTML content)
+    content = rawContent;
+  }
+
+  // --- Video embed: convert ![Video](*.mp4) img tags to video elements ---
+  content = content.replace(
+    /<img\s+src="([^"]+\.mp4)"\s+alt="([^"]*)"\s*\/?>/g,
+    (match, videoSrc, altText) => `
+      <div class="blog-gif-wrapper" style="display: flex; justify-content: center; margin: 24px 0;">
+        <video controls loop autoplay muted playsinline style="max-width:100%;border-radius:8px;background:#f4f4f4;">
+          <source src="${videoSrc}" type="video/mp4">
+          ${gifNotSupported}
+        </video>
+      </div>
+    `
+  );
+
+  // --- Legacy HTML video-src support ---
+  content = content.replace(
     /<img\s+video-src="([^"]+)"\s+poster-src="([^"]+)"\s*><\/img>/g,
     (match, videoSrc, posterSrc) => `
       <div class="blog-gif-wrapper" style="display: flex; justify-content: center; margin: 24px 0;">

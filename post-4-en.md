@@ -51,7 +51,7 @@ Authorization through Managed Identity is mandatory for the Web App to pull Dock
 
 ### 4. GitHub Secrets Configuration and Data Collection
 
-![Git](images/blog/4/git.png)
+![Git](images/blog/4/git.webp)
 
 For the automation to work smoothly, you need to securely define the identity and resource information from Azure in your GitHub repository. The table below summarizes which information to get from where and which key to store it under on the GitHub side.
 

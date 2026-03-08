@@ -10,7 +10,9 @@ function renderBlogCards() {
   const readMoreText = (window.getTranslation && window.getTranslation('blog_page.read_more', currentLang)) || 'Devamını Oku →';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
-  const html = blogPosts.map(post => `
+  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const html = sortedPosts.map(post => `
     <article class="card fade-in">
       <h3 class="card-title">${post.title[currentLang]}</h3>
       <div class="card-meta">
@@ -42,7 +44,7 @@ function renderFeaturedBlogs() {
   const readMoreText = (window.getTranslation && window.getTranslation('featured_blog.btn_continue', currentLang)) || 'Devamını Oku →';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
-  const featured = blogPosts.slice(0, 3);
+  const featured = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 4);
 
   const html = featured.map(post => `
     <article class="card">

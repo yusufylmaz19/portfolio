@@ -9,7 +9,7 @@ const translations = {
         hero: {
             subtitle: "Frontend Developer",
             title_prefix: "Merhaba, ben",
-            description: "Modern web teknolojileriyle kullanıcı odaklı, performanslı ve ölçeklenebilir arayüzler geliştiriyorum. React, Next.js ve TypeScript ile çalışıyorum.",
+            description: "Modern web teknolojileriyle kullanıcı odaklı, performanslı ve ölçeklenebilir arayüzler geliştiriyorum. React, Next.js, TypeScript ve React Native ile çalışıyorum.",
             btn_about: "Hakkımda",
             btn_contact: "İletişime Geç",
             scroll: "Aşağı Kaydır"
@@ -17,7 +17,7 @@ const translations = {
         about_preview: {
             tag: "Hakkımda",
             title: "Kısaca Ben",
-            bio: "İstanbul'da yaşayan, <strong>4+ yıllık deneyime</strong> sahip bir Frontend Developer'ım. E-ticaret projeleri, dashboard ve admin panelleri üzerinde çalıştım. <span class=\"text-neon-green\">Temiz kod</span>, modern UI/UX ve performans optimizasyonu konularına önem veriyorum.",
+            bio: "İstanbul'da yaşayan, <strong>4+ yıllık deneyime</strong> sahip bir Frontend Developer'ım. React Native, SQL ve .NET teknolojileriyle de projeler geliştirdim. <span class=\"text-neon-green\">Temiz kod</span>, modern UI/UX ve performans optimizasyonu konularına önem veriyorum.",
             btn_more: "Daha Fazla Bilgi"
         },
         css_art: {
@@ -44,7 +44,7 @@ const translations = {
             bio: {
                 title: "Merhaba! 👋",
                 p1: "Modern web teknolojileriyle kullanıcı odaklı, performanslı ve ölçeklenebilir arayüzler geliştiren bir <span class=\"text-neon-green\">Frontend Developer</span>'ım.",
-                p2: "Özellikle <strong>e-ticaret projeleri</strong>, dashboard ve admin panelleri üzerinde çalıştım. Temiz kod, modern UI/UX ve performans optimizasyonu konularına önem veriyorum.",
+                p2: "Özellikle <strong>e-ticaret projeleri</strong>, dashboard ve admin panelleri üzerinde çalıştım. React Native, SQL, C# ve .NET ekosistemlerinde deneyim sahibiyim. Temiz kod, modern UI/UX ve performans optimizasyonu konularına önem veriyorum.",
                 p3: "Şu anda <strong>TostBang</strong>'de Frontend Developer olarak çalışıyorum. Next.js ile SSR projeleri, SEO optimizasyonları ve Docker ile containerization süreçlerinde aktif rol alıyorum.",
                 location: "📍 Konum",
                 location_val: "İstanbul, Türkiye",
@@ -127,7 +127,7 @@ const translations = {
         hero: {
             subtitle: "Frontend Developer",
             title_prefix: "Hello, I am",
-            description: "I build user-focused, performant, and scalable interfaces with modern web technologies. I work with React, Next.js, and TypeScript.",
+            description: "I build user-focused, performant, and scalable interfaces with modern web technologies. I work with React, Next.js, TypeScript, and React Native.",
             btn_about: "About Me",
             btn_contact: "Contact Me",
             scroll: "Scroll Down"
@@ -135,7 +135,7 @@ const translations = {
         about_preview: {
             tag: "About",
             title: "About Me",
-            bio: "I am a Frontend Developer based in Istanbul with <strong>4+ years of experience</strong>. I have worked on e-commerce projects, dashboards, and admin panels. I value <span class=\"text-neon-green\">clean code</span>, modern UI/UX, and performance optimization.",
+            bio: "I am a Frontend Developer based in Istanbul with <strong>4+ years of experience</strong>. I have also developed projects with React Native, SQL, and .NET technologies. I value <span class=\"text-neon-green\">clean code</span>, modern UI/UX, and performance optimization.",
             btn_more: "More Info"
         },
         css_art: {
@@ -162,7 +162,7 @@ const translations = {
             bio: {
                 title: "Hello! 👋",
                 p1: "I am a <span class=\"text-neon-green\">Frontend Developer</span> developing user-focused, performant, and scalable interfaces with modern web technologies.",
-                p2: "I have specifically worked on <strong>e-commerce projects</strong>, dashboards, and admin panels. I allow importance to clean code, modern UI/UX, and performance optimization.",
+                p2: "I have specifically worked on <strong>e-commerce projects</strong>, dashboards, and admin panels. I have experience in React Native, SQL, C#, and .NET ecosystems. I value clean code, modern UI/UX, and performance optimization.",
                 p3: "Currently working as a Frontend Developer at <strong>TostBang</strong>. I take an active role in Next.js SSR projects, SEO optimizations, and containerization processes with Docker.",
                 location: "📍 Location",
                 location_val: "Istanbul, Turkey",

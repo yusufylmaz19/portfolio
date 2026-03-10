@@ -8,6 +8,7 @@ function renderBlogCards() {
   const currentLang = window.getCurrentLanguage ? window.getCurrentLanguage() : 'tr';
   console.log(currentLang);
   const readMoreText = (window.getTranslation && window.getTranslation('blog_page.read_more', currentLang)) || 'Devamını Oku →';
+  const readTimeUnit = (window.getTranslation && window.getTranslation('blog_page.reading_time_unit', currentLang)) || 'dk';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -18,7 +19,7 @@ function renderBlogCards() {
       <div class="card-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
-        <span>${post.readTime} ${readTimeSuffix}</span>
+        <span>${post.readTime} ${readTimeUnit} ${readTimeSuffix}</span>
       </div>
       <p class="card-description">${post.excerpt[currentLang]}</p>
       <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
@@ -42,6 +43,7 @@ function renderFeaturedBlogs() {
 
   const currentLang = window.getCurrentLanguage ? window.getCurrentLanguage() : 'tr';
   const readMoreText = (window.getTranslation && window.getTranslation('featured_blog.btn_continue', currentLang)) || 'Devamını Oku →';
+  const readTimeUnit = (window.getTranslation && window.getTranslation('blog_page.reading_time_unit', currentLang)) || 'dk';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
   const featured = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 4);
@@ -52,7 +54,7 @@ function renderFeaturedBlogs() {
       <div class="card-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
-        <span>${post.readTime} ${readTimeSuffix}</span>
+        <span>${post.readTime} ${readTimeUnit} ${readTimeSuffix}</span>
       </div>
       <p class="card-description">${post.excerpt[currentLang]}</p>
       <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
@@ -74,6 +76,7 @@ function renderBlogDetail() {
   const notFoundDesc = (window.getTranslation && window.getTranslation('blog_page.not_found_desc', currentLang)) || 'Aradığınız içerik mevcut değil.';
   const backBtnText = (window.getTranslation && window.getTranslation('blog_page.back_to_blog', currentLang)) || "Blog'a Dön";
   const gifNotSupported = (window.getTranslation && window.getTranslation('blog_page.gif_not_supported', currentLang)) || "GIF/video desteklenmiyor.";
+  const readTimeUnit = (window.getTranslation && window.getTranslation('blog_page.reading_time_unit', currentLang)) || 'dk';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -142,7 +145,7 @@ function renderBlogDetail() {
       <div class="blog-detail-meta">
         <span>${formatDate(post.date)}</span>
         <span>•</span>
-        <span>${post.readTime} ${readTimeSuffix}</span>
+        <span>${post.readTime} ${readTimeUnit} ${readTimeSuffix}</span>
       </div>
     </header>
     <div class="blog-detail-content">

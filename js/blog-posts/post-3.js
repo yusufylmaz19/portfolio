@@ -9,7 +9,7 @@ export const post3 = {
     en: "A guide to creating a web page that lists popular movies using the TMDB API."
   },
   date: "2022-04-05",
-  readTime: "4 dk",
+  readTime: "4",
   mediumUrl: "",
   content: {
     tr: `## Tmdb API sini kullanmak

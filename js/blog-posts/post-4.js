@@ -9,7 +9,7 @@ export const post4 = {
     en: "Automating the Azure Web App deployment process with GitHub Actions and Docker."
   },
   date: "2026-03-08",
-  readTime: "12 dk",
+  readTime: "12",
   mediumUrl: "",
   content: {
     tr: `## Azure Web App Deployment Rehberi: GitHub Actions ve Docker ile Otomasyon

@@ -109,6 +109,7 @@ const translations = {
                 subtitle: "Frontend development ve web teknolojileri"
             },
             read_more: "Devamını Oku →",
+            reading_time_unit: "dk",
             reading_time_suffix: "okuma",
             back_to_blog: "Blog'a Dön",
             not_found_title: "Blog yazısı bulunamadı",
@@ -230,6 +231,7 @@ const translations = {
                 subtitle: "Frontend development and web technologies"
             },
             read_more: "Read More →",
+            reading_time_unit: "min",
             reading_time_suffix: "read",
             back_to_blog: "Back to Blog",
             not_found_title: "Blog post not found",

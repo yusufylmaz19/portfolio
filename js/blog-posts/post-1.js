@@ -9,7 +9,7 @@ export const post1 = {
     en: "A comprehensive guide from HTTP protocol basics to HTTPS, SSL/TLS and SSH."
   },
   date: "2022-07-14",
-  readTime: "10 dk",
+  readTime: "10",
   mediumUrl: "",
   content: {
     tr: `## HTTP, HTTPS, SSL/TLS,SSH

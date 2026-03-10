@@ -9,7 +9,7 @@ export const post2 = {
     en: "A detailed guide about the Git version control system."
   },
   date: "2022-07-25",
-  readTime: "9 dk",
+  readTime: "9",
   mediumUrl: "",
   content: {
     tr: `## Git

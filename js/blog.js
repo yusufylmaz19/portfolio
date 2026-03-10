@@ -181,10 +181,11 @@ function updateMetaTags(post, lang) {
   
   if (match && match[1]) {
     imageUrl = match[1];
-    // If it's a relative path, make it absolute
     if (!imageUrl.startsWith('http')) {
       imageUrl = 'https://www.yusufyilmaz.tech/' + imageUrl;
     }
+  } else {
+    imageUrl = 'https://www.yusufyilmaz.tech/images/blog/4/azure.webp'; 
   }
 
   // Update Page Title

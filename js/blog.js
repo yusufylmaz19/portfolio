@@ -163,6 +163,52 @@ function renderBlogDetail() {
     el.style.fontSize = '0.95em';
     el.style.color = '#888';
   });
+
+  // Update meta tags for social sharing
+  updateMetaTags(post, currentLang);
+}
+
+// Update meta tags for social media previews
+function updateMetaTags(post, lang) {
+  const title = post.title[lang];
+  const description = post.excerpt[lang];
+  const url = window.location.href;
+  
+  // Try to find the first image in markdown content
+  const imgRegex = /!\[.*?\]\((.*?)\)/;
+  const match = post.content[lang].match(imgRegex);
+  let imageUrl = 'https://www.yusufyilmaz.tech/images/favicon.svg'; // Default image
+  
+  if (match && match[1]) {
+    imageUrl = match[1];
+    // If it's a relative path, make it absolute
+    if (!imageUrl.startsWith('http')) {
+      imageUrl = 'https://www.yusufyilmaz.tech/' + imageUrl;
+    }
+  }
+
+  // Update Page Title
+  document.title = `${title} | Yusuf Yılmaz`;
+
+  // Update Open Graph tags
+  const ogTitle = document.getElementById('og-title');
+  if (ogTitle) ogTitle.setAttribute('content', title);
+  
+  const ogDescription = document.getElementById('og-description');
+  if (ogDescription) ogDescription.setAttribute('content', description);
+  
+  const ogImage = document.getElementById('og-image');
+  if (ogImage) ogImage.setAttribute('content', imageUrl);
+
+  // Update Twitter tags
+  const twitterTitle = document.getElementById('twitter-title');
+  if (twitterTitle) twitterTitle.setAttribute('content', title);
+  
+  const twitterDescription = document.getElementById('twitter-description');
+  if (twitterDescription) twitterDescription.setAttribute('content', description);
+  
+  const twitterImage = document.getElementById('twitter-image');
+  if (twitterImage) twitterImage.setAttribute('content', imageUrl);
 }
 
 // Format date to Turkish or English locale

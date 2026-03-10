@@ -22,7 +22,7 @@ function renderBlogCards() {
         <span>${post.readTime} ${readTimeUnit} ${readTimeSuffix}</span>
       </div>
       <p class="card-description">${post.excerpt[currentLang]}</p>
-      <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+      <a href="blog-${post.id}.html" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
         ${readMoreText}
       </a>
     </article>
@@ -57,7 +57,7 @@ function renderFeaturedBlogs() {
         <span>${post.readTime} ${readTimeUnit} ${readTimeSuffix}</span>
       </div>
       <p class="card-description">${post.excerpt[currentLang]}</p>
-      <a href="blog-detail.html?id=${post.id}" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+      <a href="blog-${post.id}.html" class="btn btn-secondary mt-md" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
         ${readMoreText}
       </a>
     </article>
@@ -79,8 +79,15 @@ function renderBlogDetail() {
   const readTimeUnit = (window.getTranslation && window.getTranslation('blog_page.reading_time_unit', currentLang)) || 'dk';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const postId = parseInt(urlParams.get('id'));
+  // Read post ID from meta tag first (for blog-X.html pages), fallback to query param
+  const metaPostId = document.querySelector('meta[name="blog-post-id"]');
+  let postId;
+  if (metaPostId) {
+    postId = parseInt(metaPostId.getAttribute('content'));
+  } else {
+    const urlParams = new URLSearchParams(window.location.search);
+    postId = parseInt(urlParams.get('id'));
+  }
 
   const post = blogPosts.find(p => p.id === postId);
 

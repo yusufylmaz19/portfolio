@@ -46,7 +46,7 @@ function renderFeaturedBlogs() {
   const readTimeUnit = (window.getTranslation && window.getTranslation('blog_page.reading_time_unit', currentLang)) || 'dk';
   const readTimeSuffix = (window.getTranslation && window.getTranslation('blog_page.reading_time_suffix', currentLang)) || 'okuma';
 
-  const featured = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 4);
+  const featured = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6);
 
   const html = featured.map(post => `
     <article class="card">

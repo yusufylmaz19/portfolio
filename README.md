@@ -15,3 +15,7 @@ Open **http://127.0.0.1:4173/__editor**. `node scripts/local-editor.mjs` works t
 Select an article or choose **Yeni yazı**, fill in the English and Turkish title, summary and Markdown body, then press **Kaydet**. Both languages are required. The optional source link appears in the article. Saving changes `js/blog-posts/post-N.js` and regenerates `js/blog-posts/index.js`. The preview link opens that article in the single-page portfolio. Stop the server with Ctrl+C.
 
 The editor changes local files only. Review the Git diff, then commit and push those files through your normal GitHub Pages deployment workflow. Images referenced in Markdown can be placed under `images/blog/` and linked with paths such as `images/blog/my-photo.png`.
+
+## CSS art videos
+
+The six drawing cards use matching files in `videos/` for silent hover previews and a full video player. Their filenames are mapped to CodePen drawings in `js/portfolio.js`. Include the video files in the Git commit when publishing the site.

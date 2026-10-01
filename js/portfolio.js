@@ -2,18 +2,23 @@ import { blogPosts } from './blog-posts/index.js';
 import { copy } from './portfolio-i18n.js';
 
 const drawings = [
-  ['abKmvRx', 'Kurt Cobain'],
-  ['dyEpmMG', 'Ana de Armas'],
-  ['rNdgPQe', 'Wall-E & Eve'],
-  ['ExELzbN', 'Freddie Mercury'],
-  ['mdxWQvJ', 'Samurai Jack'],
-  ['KKoMzYe', 'PowerPuff Girls Bubbles']
+  ['abKmvRx', 'Kurt Cobain', 'Kurt.mp4'],
+  ['dyEpmMG', 'Ana de Armas', 'Ana.mp4'],
+  ['rNdgPQe', 'Wall-E & Eve', 'Wall-E.mp4'],
+  ['ExELzbN', 'Freddie Mercury', 'Freddie.mp4'],
+  ['mdxWQvJ', 'Samurai Jack', 'samuraiJack.mp4'],
+  ['KKoMzYe', 'PowerPuff Girls Bubbles', 'bubbles.mp4']
 ];
 
 const orderedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
 const drawingsGrid = document.getElementById('drawings-grid');
+const drawingDialog = document.getElementById('drawing-video-dialog');
+const drawingDialogVideo = document.getElementById('drawing-dialog-video');
 const writingList = document.getElementById('writing-list');
 let language = readLanguage();
+let activePreview = null;
+const hoverPreview = matchMedia('(hover: hover) and (pointer: fine)');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 function readLanguage() {
   try { return localStorage.getItem('language') === 'tr' ? 'tr' : 'en'; }
@@ -41,8 +46,12 @@ function translatePage() {
   document.querySelector('.wordmark')?.setAttribute('aria-label', language === 'en' ? 'Yusuf Yılmaz, back to top' : 'Yusuf Yılmaz, sayfanın başı');
   document.querySelector('.site-nav')?.setAttribute('aria-label', language === 'en' ? 'Main navigation' : 'Ana menü');
   document.querySelector('.experience-list')?.setAttribute('aria-label', language === 'en' ? 'Experience' : 'Deneyim');
-  drawingsGrid.querySelectorAll('.drawing-item').forEach(link => {
-    link.setAttribute('aria-label', language === 'en' ? `${link.dataset.title} CSS art on CodePen` : `${link.dataset.title} CSS çizimini CodePen'de aç`);
+  drawingsGrid.querySelectorAll('.drawing-item').forEach(card => {
+    card.querySelectorAll('.drawing-codepen-link').forEach(link => {
+      link.setAttribute('aria-label', language === 'en' ? `Open ${card.dataset.title} CSS art on CodePen` : `${card.dataset.title} CSS çizimini CodePen'de aç`);
+    });
+    updatePreviewButton(card);
+    card.querySelector('.drawing-full-button').setAttribute('aria-label', `${copy[language]['drawings.fullVideo']}: ${card.dataset.title}`);
   });
   document.querySelectorAll('.language-switch button').forEach(button => {
     const selected = button.dataset.lang === language;
@@ -67,23 +76,110 @@ document.querySelectorAll('.language-switch button').forEach(button => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
 
-drawings.forEach(([id, title]) => {
-  const link = element('a', 'drawing-item');
-  link.href = `https://codepen.io/yusufyilmaz_/pen/${id}`;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.dataset.title = title;
-  link.setAttribute('aria-label', `${title} CSS art on CodePen`);
+function updatePreviewButton(card) {
+  const button = card.querySelector('.drawing-preview-button');
+  const playing = activePreview === card;
+  button.textContent = copy[language][playing ? 'drawings.stopPreview' : 'drawings.preview'];
+  button.setAttribute('aria-pressed', String(playing));
+  button.setAttribute('aria-label', `${button.textContent}: ${card.dataset.title}`);
+}
+
+function stopPreview() {
+  if (!activePreview) return;
+  const card = activePreview;
+  activePreview = null;
+  const video = card.querySelector('.drawing-preview-video');
+  video.pause();
+  if (video.readyState) video.currentTime = 0;
+  card.classList.remove('is-previewing');
+  updatePreviewButton(card);
+}
+
+function startPreview(card) {
+  if (activePreview === card) return;
+  stopPreview();
+  const video = card.querySelector('.drawing-preview-video');
+  video.muted = true;
+  activePreview = card;
+  updatePreviewButton(card);
+  video.play().catch(() => {
+    if (activePreview === card) stopPreview();
+  });
+}
+
+function openDrawingVideo(card) {
+  stopPreview();
+  drawingDialog.querySelector('#drawing-dialog-title').textContent = card.dataset.title;
+  drawingDialogVideo.src = card.dataset.video;
+  drawingDialogVideo.muted = false;
+  drawingDialog.showModal();
+  drawingDialogVideo.play().catch(() => {});
+}
+
+drawings.forEach(([id, title, filename]) => {
+  const card = element('article', 'drawing-item');
+  card.dataset.title = title;
+  card.dataset.video = `videos/${filename}`;
   const imageWrap = element('div', 'drawing-image');
+  const mediaLink = element('a', 'drawing-codepen-link drawing-media-link');
+  mediaLink.href = `https://codepen.io/yusufyilmaz_/pen/${id}`;
+  mediaLink.target = '_blank';
+  mediaLink.rel = 'noopener noreferrer';
   const image = element('img');
   image.src = `https://shots.codepen.io/yusufyilmaz_/pen/${id}-800.jpg`;
   image.alt = `${title} CSS art`;
   image.loading = 'lazy';
-  imageWrap.append(image);
-  const caption = element('div', 'drawing-caption');
+  const preview = element('video', 'drawing-preview-video');
+  preview.src = card.dataset.video;
+  preview.muted = true;
+  preview.loop = true;
+  preview.playsInline = true;
+  preview.preload = 'none';
+  preview.setAttribute('aria-hidden', 'true');
+  preview.addEventListener('playing', () => {
+    if (activePreview === card) card.classList.add('is-previewing');
+  });
+  mediaLink.append(image, preview);
+  const actions = element('div', 'drawing-actions');
+  const previewButton = element('button', 'drawing-preview-button');
+  previewButton.type = 'button';
+  previewButton.addEventListener('click', () => activePreview === card ? stopPreview() : startPreview(card));
+  const fullButton = element('button', 'drawing-full-button');
+  fullButton.type = 'button';
+  fullButton.dataset.i18n = 'drawings.fullVideo';
+  fullButton.textContent = copy.en['drawings.fullVideo'];
+  fullButton.addEventListener('click', () => openDrawingVideo(card));
+  actions.append(previewButton, fullButton);
+  imageWrap.append(mediaLink, actions);
+  imageWrap.addEventListener('pointerenter', () => {
+    if (hoverPreview.matches && !reducedMotion.matches) startPreview(card);
+  });
+  imageWrap.addEventListener('pointerleave', () => {
+    if (hoverPreview.matches && activePreview === card) stopPreview();
+  });
+  const caption = element('a', 'drawing-caption drawing-codepen-link');
+  caption.href = mediaLink.href;
+  caption.target = '_blank';
+  caption.rel = 'noopener noreferrer';
   caption.append(element('span', '', title), element('span', '', '↗'));
-  link.append(imageWrap, caption);
-  drawingsGrid.append(link);
+  card.append(imageWrap, caption);
+  drawingsGrid.append(card);
+});
+
+drawingDialog.querySelector('.drawing-dialog-close').addEventListener('click', () => drawingDialog.close());
+drawingDialog.addEventListener('click', event => {
+  if (event.target === drawingDialog) drawingDialog.close();
+});
+drawingDialog.addEventListener('close', () => {
+  drawingDialogVideo.pause();
+  drawingDialogVideo.removeAttribute('src');
+  drawingDialogVideo.load();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopPreview();
+    drawingDialogVideo.pause();
+  }
 });
 
 function showContent(post, container) {

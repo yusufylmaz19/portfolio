@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Yusuf Yılmaz — Full Stack Developer</title>
+  <desc id="desc">Portfolio social preview in cream, blue and pink.</desc>
+  <rect width="1200" height="630" fill="#f1f0e7"/>
+  <g fill="#214d91" font-family="Arial, Helvetica, sans-serif">
+    <text x="70" y="75" font-size="18" font-weight="700" letter-spacing="2.5">YUSUF YILMAZ</text>
+    <text x="1130" y="75" text-anchor="end" font-size="16" font-weight="700" letter-spacing="2">PORTFOLIO / 2026</text>
+  </g>
+  <path d="M70 102H1130" stroke="#214d91" stroke-opacity=".35"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="-8">
+    <text x="62" y="290" fill="#214d91" font-size="112">Yusuf</text>
+    <text x="62" y="406" fill="#214d91" font-size="112">Yılmaz<tspan fill="#dd3377">.</tspan></text>
+  </g>
+  <text x="70" y="467" fill="#214d91" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Full Stack Developer</text>
+  <path d="M70 505H570" stroke="#dd3377" stroke-width="4"/>
+  <g fill="#214d91" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="1">
+    <text x="70" y="560">INTERFACES</text>
+    <text x="242" y="560">SYSTEMS</text>
+    <text x="393" y="560">IDEAS</text>
+  </g>
+  <rect x="721" y="134" width="409" height="417" fill="#214d91"/>
+  <path d="M747 181H1104M747 507H1104" stroke="#f1f0e7" stroke-opacity=".58"/>
+  <g fill="#f1f0e7" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="747" y="165" font-size="13" letter-spacing="2">DESIGN / CODE / DELIVERY</text>
+    <text x="758" y="441" font-size="270" letter-spacing="-34">Y<tspan fill="#dd3377">.</tspan></text>
+    <text x="747" y="533" font-size="12" letter-spacing="2">ISTANBUL / TR</text>
+  </g>
+  <path d="M1084 534L1104 514M1090 514H1104V528" fill="none" stroke="#f1f0e7" stroke-width="2"/>
+  <path d="M70 590H1130" stroke="#214d91" stroke-opacity=".35"/>
+  <text x="70" y="614" fill="#214d91" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">YUSUFYILMAZ.TECH</text>
+</svg>

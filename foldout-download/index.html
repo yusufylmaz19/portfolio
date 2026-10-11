@@ -11,16 +11,14 @@
     <title>FOLDOUT'u İndir</title>
     <link rel="canonical" href="https://www.yusufyilmaz.tech/foldout-download/" />
     <link rel="stylesheet" href="/foldout-download/styles.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1HC47YG6F"></script>
     <script>
-      (() => {
-        const playStoreUrl =
-          "https://play.google.com/store/apps/details?id=app.katla.game";
-        const userAgent = navigator.userAgent || "";
-
-        if (/Android/i.test(userAgent)) {
-          window.location.replace(playStoreUrl);
-        }
-      })();
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-E1HC47YG6F");
     </script>
   </head>
   <body>
@@ -82,8 +80,43 @@
           (platform === "MacIntel" && touchPoints > 1);
         const english = !navigator.language.toLowerCase().startsWith("tr");
 
+        const visitorPlatform = isAndroid
+          ? "android"
+          : isAppleMobile
+            ? "ios"
+            : "web";
+
+        gtag("event", "foldout_download_visit", {
+          visitor_platform: visitorPlatform,
+          transport_type: "beacon",
+        });
+
+        document
+          .getElementById("play-store-link")
+          .addEventListener("click", () => {
+            gtag("event", "foldout_google_play_click", {
+              visitor_platform: visitorPlatform,
+              transport_type: "beacon",
+            });
+          });
+
         if (isAndroid) {
           document.body.dataset.platform = "android";
+          const playStoreUrl =
+            "https://play.google.com/store/apps/details?id=app.katla.game";
+          let redirected = false;
+          const openPlayStore = () => {
+            if (redirected) return;
+            redirected = true;
+            window.location.replace(playStoreUrl);
+          };
+
+          gtag("event", "foldout_android_redirect", {
+            transport_type: "beacon",
+            event_callback: openPlayStore,
+            event_timeout: 900,
+          });
+          window.setTimeout(openPlayStore, 1000);
         } else if (isAppleMobile) {
           document.body.dataset.platform = "ios";
           document.getElementById("title").textContent = english

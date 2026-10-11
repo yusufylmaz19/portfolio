@@ -1,0 +1,196 @@
+:root {
+  color-scheme: dark;
+  --bg: #100c1d;
+  --card: #1d1829;
+  --ink: #f7f2ff;
+  --muted: #b6aec3;
+  --line: #3b304d;
+  --lime: #d6ff72;
+  --purple: #ad89ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 80% 0, #241837 0, transparent 42%),
+    var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 Inter, system-ui, -apple-system, sans-serif;
+}
+
+main {
+  width: min(780px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 56px 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.mark {
+  width: 42px;
+  height: 42px;
+  background: var(--lime);
+  clip-path: polygon(0 0, 100% 0, 62% 50%, 100% 100%, 0 100%);
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+}
+
+article {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--card) 94%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 48px);
+}
+
+article::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  right: -92px;
+  bottom: -110px;
+  border: 1px solid var(--purple);
+  border-radius: 42px;
+  opacity: 0.25;
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(34px, 7vw, 58px);
+  line-height: 1.05;
+}
+
+p,
+a {
+  color: var(--muted);
+}
+
+a {
+  text-underline-offset: 4px;
+  text-decoration-color: var(--purple);
+}
+
+.lead {
+  font-size: 19px;
+}
+
+.meta {
+  color: var(--purple);
+  font-size: 14px;
+}
+
+.store-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.store-button {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  background: #151120;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.store-button small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.play-store-button {
+  background: color-mix(in srgb, var(--lime) 8%, #151120);
+  border-color: color-mix(in srgb, var(--lime) 62%, var(--line));
+}
+
+.play-store-button:hover,
+.play-store-button:focus-visible {
+  border-color: var(--lime);
+  outline: none;
+}
+
+.store-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--lime);
+  font-size: 26px;
+}
+
+.apple-icon {
+  width: 38px;
+  color: var(--purple);
+  font-size: 42px;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.app-store-soon {
+  opacity: 0.72;
+}
+
+.download-note {
+  max-width: 560px;
+  margin: 22px 0 0;
+  font-size: 14px;
+}
+
+body[data-platform="ios"] .app-store-soon {
+  border-color: var(--purple);
+  opacity: 1;
+}
+
+footer {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  main {
+    padding-top: 28px;
+  }
+
+  article {
+    border-radius: 22px;
+  }
+
+  .store-actions {
+    grid-template-columns: 1fr;
+  }
+}

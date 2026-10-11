@@ -3,116 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="FOLDOUT'u Google Play'den indir. App Store sürümü yakında."
-    />
-    <meta name="theme-color" content="#100c1d" />
-    <title>FOLDOUT'u İndir</title>
-    <link rel="canonical" href="https://www.yusufyilmaz.tech/download/" />
-    <link rel="stylesheet" href="/download/styles.css" />
-    <script>
-      (() => {
-        const playStoreUrl =
-          "https://play.google.com/store/apps/details?id=app.katla.game";
-        const userAgent = navigator.userAgent || "";
-
-        if (/Android/i.test(userAgent)) {
-          window.location.replace(playStoreUrl);
-        }
-      })();
-    </script>
+    <meta http-equiv="refresh" content="0;url=/foldout-download/" />
+    <link rel="canonical" href="https://www.yusufyilmaz.tech/foldout-download/" />
+    <title>FOLDOUT</title>
+    <script>window.location.replace("/foldout-download/");</script>
   </head>
   <body>
-    <main>
-      <header>
-        <span class="mark" aria-hidden="true"></span>
-        <span class="brand">FOLDOUT</span>
-      </header>
-      <article>
-        <p class="meta" id="eyebrow">BİRAZ YER AÇ.</p>
-        <h1 id="title">Oyunu indir.</h1>
-        <p class="lead" id="message">
-          FOLDOUT şimdi Google Play'de. App Store sürümü yakında.
-        </p>
-
-        <div class="store-actions">
-          <a
-            class="store-button play-store-button"
-            id="play-store-link"
-            href="https://play.google.com/store/apps/details?id=app.katla.game"
-            rel="noopener"
-          >
-            <span class="store-icon" aria-hidden="true">▶</span>
-            <span><small>HEMEN İNDİR</small>Google Play</span>
-          </a>
-          <div class="store-button app-store-soon" id="app-store-status">
-            <span class="apple-icon" aria-hidden="true">●</span>
-            <span><small>YAKINDA</small>App Store</span>
-          </div>
-        </div>
-
-        <p class="download-note" id="download-note">
-          Android cihaz kullanıyorsan Google Play otomatik açılır. Açılmazsa
-          yukarıdaki düğmeye dokun.
-        </p>
-
-        <noscript>
-          <p class="download-note">
-            Android için
-            <a href="https://play.google.com/store/apps/details?id=app.katla.game"
-              >Google Play sayfasını aç</a
-            >.
-          </p>
-        </noscript>
-      </article>
-      <footer>
-        <a href="https://www.yusufyilmaz.tech/">Portfolio</a> · © 2026 FOLDOUT
-      </footer>
-    </main>
-
-    <script>
-      (() => {
-        const userAgent = navigator.userAgent || "";
-        const platform = navigator.platform || "";
-        const touchPoints = navigator.maxTouchPoints || 0;
-        const isAndroid = /Android/i.test(userAgent);
-        const isAppleMobile =
-          /iPhone|iPad|iPod/i.test(userAgent) ||
-          (platform === "MacIntel" && touchPoints > 1);
-        const english = !navigator.language.toLowerCase().startsWith("tr");
-
-        if (isAndroid) {
-          document.body.dataset.platform = "android";
-        } else if (isAppleMobile) {
-          document.body.dataset.platform = "ios";
-          document.getElementById("title").textContent = english
-            ? "Coming soon to iPhone."
-            : "iPhone'a yakında geliyor.";
-          document.getElementById("message").textContent = english
-            ? "FOLDOUT is coming soon to the App Store. It is available now on Google Play."
-            : "FOLDOUT'un App Store sürümü yakında. Android sürümü şimdi Google Play'de.";
-          document.getElementById("download-note").textContent = english
-            ? "Check back here when the App Store version is released."
-            : "App Store sürümü yayınlandığında bu bağlantı güncellenecek.";
-        }
-
-        if (english) {
-          document.documentElement.lang = "en";
-          document.getElementById("eyebrow").textContent = "MAKE SOME ROOM.";
-          if (!isAppleMobile) {
-            document.getElementById("title").textContent = "Download the game.";
-            document.getElementById("message").textContent =
-              "FOLDOUT is available now on Google Play. Coming soon to the App Store.";
-            document.getElementById("download-note").textContent =
-              "On Android, Google Play opens automatically. If it does not, use the button above.";
-          }
-          document.querySelector("#play-store-link small").textContent =
-            "GET IT NOW";
-          document.querySelector("#app-store-status small").textContent =
-            "COMING SOON";
-        }
-      })();
-    </script>
+    <p><a href="/foldout-download/">FOLDOUT indirme sayfasına git</a></p>
   </body>
 </html>
